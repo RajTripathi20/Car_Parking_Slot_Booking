@@ -143,7 +143,7 @@ nav .search-box .bx-search{
     text-align: center;
     color: #fff;
     font-size: 22px;
-    transition: all 0.4 ease;
+    /*transition: all 0.4 ease;*/
 }
 .home-section nav .profile-details{
     display: flex;
@@ -263,7 +263,7 @@ nav .profile-details i{
 .home-content .sales-boxes .recent-sales{
     width: 100%;
     background: #fff;
-    padding: 20px 30px;
+    padding: 50px 30px;
     margin: 0 20px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -289,7 +289,7 @@ nav .profile-details i{
 .sales-boxes .sales-details li a{
     font-size: 18px;
     color: #333;
-    font-size: 400;
+
     text-decoration: none;
 }
 .sales-boxes .box .buttons{
@@ -306,6 +306,7 @@ nav .profile-details i{
 .sales-boxes .box .button a{
     color: #fff;
     background: #0A2558;
+    align-items: flex-end;
     margin: 5px;
     padding: 4px 12px;
     font-size: 15px;
