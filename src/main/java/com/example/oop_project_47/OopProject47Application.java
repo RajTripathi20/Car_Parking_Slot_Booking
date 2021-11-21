@@ -14,7 +14,7 @@ public class OopProject47Application {
         SpringApplication.run(OopProject47Application.class, args);
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/login")
     public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
         return String.format("Hello %s!", name);
     }
