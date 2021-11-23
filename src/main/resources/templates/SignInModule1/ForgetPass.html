@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forget Password</title>
+</head>
+<body>
+<div id="forgot">
+    <h1>Forgot Password</h1>
+
+    <div class="forgot-container">
+
+        <form action="#" th:action="@{/forgot}" th:object="${user}" method="post">
+
+            <label >Email</label>
+            <input th:field="*{email}" type="text" name="emailId"></input>
+
+            <input type="reset" value="Clear"/></><br><br>
+            <input type="submit" value="Submit"></input>
+
+        </form>
+    </div>
+</div>
+
+</form>
+
+
+</body>
+
+</html>
