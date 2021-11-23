@@ -3,7 +3,7 @@ package com.example.oop_project_47.Car_Owner;
 import com.example.oop_project_47.Model.User;
 import javax.persistence.Entity;
 import java.util.Set;
-
+/*
 @Entity
 public class CarOwner extends User {
 
@@ -31,8 +31,6 @@ public class CarOwner extends User {
         this.phoneVerified = phoneVerified;
     }
 
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
     }
 
-}
+*/
