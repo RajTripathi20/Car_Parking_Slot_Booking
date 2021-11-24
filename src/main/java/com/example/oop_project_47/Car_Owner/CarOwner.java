@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "Car_Owners")
 public class CarOwner extends User {
 
     /* public boolean isUserComplete() {
