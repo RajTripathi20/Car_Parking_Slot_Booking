@@ -2,12 +2,14 @@ package com.example.oop_project_47.Car_Owner;
 
 import com.example.oop_project_47.Model.User;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Set;
-/*
+
 @Entity
+@Table
 public class CarOwner extends User {
 
-    public boolean isUserComplete() {
+    /* public boolean isUserComplete() {
         return isUserComplete;
     }
 
@@ -29,8 +31,7 @@ public class CarOwner extends User {
 
     public void setPhoneVerified(boolean phoneVerified) {
         this.phoneVerified = phoneVerified;
-    }
+    } */
 
     }
 
-*/
