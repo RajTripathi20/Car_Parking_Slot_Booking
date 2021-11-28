@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+                      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
@@ -7,60 +8,62 @@
 <body>
 <div class="registrationbox">
     <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
-    <form name='registration' action="/perform_registration" method='POST'>
+    <form name='registration' th:action="@{/register}" th:object="${carOwner}" method='POST'>
         <tr>
             <td>First Name: <br></td>
-            <td><input type='text' name='firstName' value=''></td>
+            <td><input th:field="*{firstName}" type='text' name='firstName' required></input></td>
         </tr>
         <br>
         <tr>
             <td>Last Name:</td><br>
-            <td><input type='text' name='lastName' /></td>
+            <td><input th:field="*{lastName}" type='text' name='lastName' required></input></td>
         </tr>
         <tr>
         <br>
         <tr>
             <td>Username:</td><br>
-            <td><input type='text' name='username' /></td>
+            <td><input th:field="*{username}" type='text' name='username' required></input></td>
         </tr>
         <br>
         <tr>
             <td>Password:</td><br>
-            <td><input type='password' id='password' name='password' /></td>
+            <td><input th:field="*{password}" type='password' id='password' name='password' onkeyup="return passwordStrength();" required/></td>
         </tr>
+        <span id="strength"></span>
         <br>
         <tr>
             <td>Confirm Password:</td><br>
-            <td><input type='password' id='confirmPassword' name='confirmPassword' /></td>
+            <td><input type='password' id='confirmPassword' name='confirmPassword' onkeyup="return pwd_matcher();" required/></td>
         </tr>
+        <span id="match"></span>
         <br>
         <tr>
             <td>Address:</td><br>
-            <td><input type='text' name='address' /></td>
+            <td><input th:field="*{address}" type='text' name='address' required></input></td>
         </tr>
         <br>
         <tr>
             <td>Email ID:</td><br>
-            <td><input type='text' name='emailId' /></td>
+            <td><input th:field="*{email_id}" type='text' name='email_id'  required></input></td>
         </tr>
         <br>
         <tr>
             <td>Mobile No.:</td><br>
-            <td><input type='text' name='mobileNo' /></td>
+            <td><input th:field="*{phone_number}" type='text' name='phone_number'  required></input></td>
         </tr>
         <br>
         <tr>
             <td>Car Registration no.:</td><br>
-            <td><input type='text' name='carRegistrationNo' /></td>
+            <td><input th:field="*{carRegistrationNumber}" type='text' name='carRegistrationNumber'  required></input></td>
         </tr>
         <br>
         <label for="carType">Car Type:</label><br>
-        <select name="carType" th:field="*{carType}" type="text"  id="carType">
-                <option value="hatchback">Hatch Back</option>
-                <option value="sedan">Sedan</option>
-                <option value="suv">SUV</option>
+         <select name="carType" th:field="*{carType}" type="text"  id="carType">
+                 <option value="hatchback">Hatch Back</option>
+                 <option value="sedan">Sedan</option>
+                 <option value="suv">SUV</option>
 
-            </select>
+             </select>
         </tr>
         <tr>
             <td>
@@ -69,18 +72,27 @@
         </tr>
     </form>
     <script>
-        function signup() {
+    </script>
+    <script>
+        function pwd_matcher() {
+            const button=document.getElementById('submit');
+            var match = document.getElementById('match');
             var pwd1 = document.getElementById("password").value;
             var pwd2 = document.getElementById("confirmPassword").value;
-
             if (pwd1 != pwd2) {
-                alert("Passwords do not match");
+                match.innerHTML = 'Passwords do not match';
+                button.disabled=true;
+            }
+            else {
+                button.disabled = passwordStrength();
+             //   match.innerHTML = 'Passwords match! You may proceed';
+                match.innerHTML = passwordStrength().toString();
             }
 
         }
     </script>
     <script language="javascript">
-        function passwordChanged() {
+        function passwordStrength() {
             const button=document.getElementById('submit');
             var strength = document.getElementById('strength');
             var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
@@ -89,21 +101,22 @@
             var pwd = document.getElementById("password");
             if (pwd.value.length == 0) {
                 strength.innerHTML = 'Type Password';
+                return true;
             } else if (false == enoughRegex.test(pwd.value)) {
                 strength.innerHTML = 'Your password must contain more characters!';
-                button.disabled=true;
+                return true;
             } else if (strongRegex.test(pwd.value)) {
                 strength.innerHTML = '<span style="color:#008000">Strong!</span>';
-                button.disabled=false;
+                return false;
             } else if (mediumRegex.test(pwd.value)) {
                 strength.innerHTML = '<span style="color:orange">Medium!</span>';
-                button.disabled=true;
+                return true;
             } else {
                 strength.innerHTML = '<span style="color:red">Weak!</span>';
-                button.disabled=true;
+                return true;
             }
         }
     </script>
-
+</div>
 </body>
 </html>

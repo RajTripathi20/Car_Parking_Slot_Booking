@@ -2,10 +2,41 @@ package com.example.oop_project_47.Admin;
 
 import com.example.oop_project_47.Model.User;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Table(name = "Admin")
 public class Admin extends User {
+    @Column(name = "ID")
+    @NotEmpty
+    private Integer id;
+
+    @Column(name = "First_Name")
+    @NotEmpty
+    private String firstName;
+
+    @Column(name = "Last_Name")
+    @NotEmpty
+    private String lastName;
+
+    @Column(name = "Username")
+    @NotEmpty
+    private String username;
+
+    @Column(name = "Password")
+    @NotEmpty
+    private String password;
+
+    @Column(name = "Email_ID")
+    @NotEmpty
+    private String email_id;
+
+    @Column(name = "Phone_Number")
+    @NotEmpty
+    private String phone_number;
 
     @Override
     public Integer getId()  {return 47;}
@@ -23,10 +54,10 @@ public class Admin extends User {
     public String getPassword()  {return "admin";}
 
     @Override
-    public String getEmail_ID()  {return "tripathiraj01@gmail.com";}
+    public String getEmail_id()  {return "tripathiraj01@gmail.com";}
 
     @Override
-    public String getPhone_Number()  {return "+18507897596";}
+    public String getPhone_number()  {return "+18507897596";}
 
 
 

@@ -1,34 +1,24 @@
 package com.example.oop_project_47.Model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @MappedSuperclass
 public class User extends BaseEntity {
 
-    @Column(name = "First_Name")
-    @NotEmpty
     private String firstName;
 
-    @Column(name = "Last_Name")
-    @NotEmpty
     private String lastName;
 
-    @Column(name = "Username")
-    @NotEmpty
     private String username;
 
-    @Column(name = "Password")
-    @NotEmpty
     private String password;
 
-    @Column(name = "Email_ID")
-    @NotEmpty
     private String email_id;
 
-    @Column(name = "Phone_Number")
-    @NotEmpty
     private String phone_number;
 
 
@@ -66,19 +56,19 @@ public class User extends BaseEntity {
         this.password = password;
 
 
-    }   public String getEmail_ID() {
+    }   public String getEmail_id() {
         return this.email_id;
     }
 
-    public void setEmail_ID(String email_id) {
+    public void setEmail_id(String email_id) {
         this.email_id = email_id;
 
 
-    }   public String getPhone_Number() {
+    }   public String getPhone_number() {
         return this.phone_number;
     }
 
-    public void setPhone_Number(String phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 

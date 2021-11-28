@@ -1,5 +1,5 @@
-package com.example.oop_project_47.Admin;
-/*
+package com.example.oop_project_47.LoginModule;
+
 import com.example.oop_project_47.Admin.Admin;
 import com.example.oop_project_47.Model.User;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.validation.Valid;
 @Controller
-public class AdminLoginController implements WebMvcConfigurer {
+public class LoginController implements WebMvcConfigurer {
     private String username;
     private String password;
     private boolean status;
@@ -35,7 +35,7 @@ public class AdminLoginController implements WebMvcConfigurer {
         status = (getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()));
         return status;
     }
-    @PostMapping("/")
+    @PostMapping("/login")
     //public String checkCredentials(@Valid Admin admin, BindingResult bindingResult)
     public String checkCredentials() {
         if(getStatus())
@@ -44,4 +44,4 @@ public class AdminLoginController implements WebMvcConfigurer {
         }
         return "/SignInModule1/ForgetPass";
     }
-} */
+}

@@ -3,9 +3,9 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-
-  <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings Admin Dashboard</title>
+    <link rel="stylesheet" href="../../static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="sidebar">
@@ -15,13 +15,13 @@
     </div>
     <ul class="nav-links">
         <li>
-            <a href="#" class="active">
+            <a href="#" >
                 <i class='bx bx-grid-alt' ></i>
                 <span class="links_name">Home</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="#" class="active">
                 <i class='bx bx-box' ></i>
                 <span class="links_name">Bookings</span>
             </a>
@@ -59,9 +59,6 @@
         <li class="log_out">
             <a href="#">
                 <i class='bx bx-log-out'></i>
-                <span class="links_name"><form th:action="@{/logout}" method="post">
-            <input type="submit" value="Log Out"/>
-        </form></span>
                 <span class="links_name">Log out</span>
             </a>
         </li>
@@ -86,50 +83,7 @@
 
     <div class="home-content">
         <div class="overview-boxes">
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Total Bookings</div>
-                    <div class="number">876</div>
-                    <div class="indicator">
-                        <i class='bx bx-up-arrow-alt'></i>
-                        <span class="text">Today</span>
-                    </div>
-                </div>
-                <i class='bx bx-cart-alt cart'></i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Workers</div>
-                    <div class="number">76</div>
-                    <div class="indicator">
-                        <i class='bx bx-up-arrow-alt'></i>
-                        <span class="text">working Today</span>
-                    </div>
-                </div>
-                <i class='bx bxs-cart-add cart two' ></i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Total Profit</div>
-                    <div class="number">$12,876</div>
-                    <div class="indicator">
-                        <i class='bx bx-up-arrow-alt'></i>
-                        <span class="text">Up from yesterday</span>
-                    </div>
-                </div>
-                <i class='bx bx-cart cart three' ></i>
-            </div>
-            <div class="box">
-                <div class="right-side">
-                    <div class="box-topic">Total Return</div>
-                    <div class="number">11,086</div>
-                    <div class="indicator">
-                        <i class='bx bx-down-arrow-alt down'></i>
-                        <span class="text">Down From Today</span>
-                    </div>
-                </div>
-                <i class='bx bxs-cart-download cart four' ></i>
-            </div>
+
         </div>
 
         <div class="sales-boxes">
@@ -143,6 +97,14 @@
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Name</li>
+                        <li><a href="#">Bhavya</a></li>
+                        <li><a href="#">Kanishk</a></li>
+                        <li><a href="#">Raj</a></li>
+                        <li><a href="#">Pranjal</a></li>
+                        <li><a href="#">Siri</a></li>
                     </ul>
                     <ul class="details">
                         <li class="topic">Check in time</li>
@@ -200,7 +162,7 @@
                     </div>
                 </div>
 
-<script>
+    <script>
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");
     sidebarBtn.onclick = function() {
@@ -210,8 +172,7 @@
         }else
             sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
     }
-</script>
-            </div></div></div></section>
+    </script>
+
 </body>
 </html>
-
