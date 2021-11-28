@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().oauth2Login()
                 */.and()
                 .formLogin() .loginPage("/login")
+                .usernameParameter("username").passwordParameter("password")
                 .permitAll()/*
                 .defaultSuccessUrl("/dashboard",true)
                 .userInfoEndpoint().userService(oAuth2UserService)
@@ -69,14 +70,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     Admin admin = new Admin();
     CarOwner carOwner   = new CarOwner();
-    @Override
+  /*  @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception  {
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
                 .withUser(admin.getUsername())
                 .password(passwordEncoder().encode(admin.getPassword()))
                 .roles("ADMIN");
-    }
+    } */
 
     @Bean
     public PasswordEncoder passwordEncoder() {

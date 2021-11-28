@@ -1,5 +1,7 @@
 package com.example.oop_project_47.Car_Owner;
 
+import com.example.oop_project_47.LoginModule.LoginCredentials;
+import com.example.oop_project_47.LoginModule.LoginRepository;
 import com.example.oop_project_47.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +20,9 @@ public class CarOwnerController {
 
     @Autowired
     private CarOwnerRepository carOwnerRepository;
+
+    @Autowired
+    private LoginRepository loginRepository;
 
     private PasswordEncoder passwordEncoder;
 
@@ -46,7 +51,9 @@ public class CarOwnerController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView registerUser(ModelAndView modelAndView, CarOwner carOwner) {
         carOwner.fillCarOwner();
+        LoginCredentials loginCredentials = new LoginCredentials(carOwner.getId() , "CAR_OWNER", carOwner.getUsername(), carOwner.getPassword());
         carOwnerRepository.save(carOwner);
+        loginRepository.save(loginCredentials);
         ConfirmationToken confirmationToken = new ConfirmationToken(carOwner);
 
         confirmationTokenRepository.save(confirmationToken);

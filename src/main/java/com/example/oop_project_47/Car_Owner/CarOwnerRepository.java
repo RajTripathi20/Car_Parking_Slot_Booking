@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarOwnerRepository extends JpaRepository<CarOwner, String> {
-    Optional<CarOwner> findUserByUsername(String email_id);
+    Optional<CarOwner> findUserByUsername(String username);
 }
