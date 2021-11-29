@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -15,7 +16,6 @@ import org.springframework.security.core.GrantedAuthority;
 public class CarOwner extends User implements UserDetails {
 
     @Column(name = "ID")
-    @NotEmpty
     private Integer id;
 
     @Column(name = "First_Name")
