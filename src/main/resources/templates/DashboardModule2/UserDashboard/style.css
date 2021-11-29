@@ -187,7 +187,7 @@ nav .profile-details i{
 .overview-boxes .box{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     width: 100%;
     background: #fff;
     padding: 15px 14px;
@@ -195,6 +195,33 @@ nav .profile-details i{
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 
 }
+.home-content .box .buttons{
+    /*display: -webkit-flex;*/
+    display: flex;
+    /*-webkit-justify-content: space-between;
+    justify-content: space-between;*/
+}
+.home-content  .box .button{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.home-content  .box .button a{
+    color: #fff;
+    background: #333333;
+    align-items:end;
+    margin: 2px;
+    padding: 4px 12px;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.home-content  .box .button a:hover{
+    background:  #191919;
+}
+
 .overview-boxes .booknowbox {
     display: flex;
     align-items: center;
