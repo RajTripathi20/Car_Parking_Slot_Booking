@@ -46,9 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/register", "/forgot_pass","/oauth2/**").permitAll()
-                .antMatchers("/dashboard/**").authenticated()
-                .anyRequest().authenticated()
+                .antMatchers("/", "/SignUppage_1","/register","/forgot", "/ForgetPass","/oauth2/**").permitAll()
+                .antMatchers("/Dashboard Module 2/**").permitAll()
+                //.anyRequest().authenticated()
               /*  .and()
                 .formLogin()
                 .loginPage("/login")
@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
                 .and().oauth2Login()
                 */.and()
-                .formLogin() .loginPage("/login")
+                .formLogin() .loginPage("/signin").failureUrl("/signin.error")
                 .usernameParameter("username").passwordParameter("password")
                 .permitAll()/*
                 .defaultSuccessUrl("/dashboard",true)
@@ -67,10 +67,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll()
                 .permitAll();
-    }
+    }/*
     Admin admin = new Admin();
     CarOwner carOwner   = new CarOwner();
-  /*  @Override
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception  {
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
