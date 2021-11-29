@@ -14,7 +14,9 @@
     <name>OOP_Project_47</name>
     <description>OOP_Project_47</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>16</java.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>

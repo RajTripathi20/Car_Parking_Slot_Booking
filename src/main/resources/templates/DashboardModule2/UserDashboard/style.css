@@ -186,13 +186,39 @@ nav .profile-details i{
 }
 .overview-boxes .box{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    width: calc(100% / 4 - 15px);
+    width: 100%;
     background: #fff;
     padding: 15px 14px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+
+}
+.overview-boxes .booknowbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #fff;
+    padding: 15px 14px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.overview-boxes .booknowbox button{
+    color: #fff;
+    background: #333333;
+    align-items: center;
+    margin: 5px;
+    padding: 4px 12px;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.overview-boxes .booknowbox button a:hover{
+    background:  #191919;
 }
 .overview-boxes .box-topic{
     font-size: 20px;
@@ -293,21 +319,21 @@ nav .profile-details i{
     text-decoration: none;
 }
 .sales-boxes .box .buttons{
-    display: -webkit-flex;
+    /*display: -webkit-flex;*/
     display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
+    /*-webkit-justify-content: space-between;
+    justify-content: space-between;*/
 }
 .sales-boxes .box .button{
     width: 100%;
-    /*display: flex;
-    justify-content: flex-end;*/
+    display: flex;
+    justify-content: end;
 }
 .sales-boxes .box .button a{
     color: #fff;
     background: #333333;
-    align-items: flex-end;
-    margin: 5px;
+    align-items:end;
+    margin: 2px;
     padding: 4px 12px;
     font-size: 15px;
     font-weight: 400;
