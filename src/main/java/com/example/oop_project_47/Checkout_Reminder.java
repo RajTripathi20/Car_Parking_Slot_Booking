@@ -4,7 +4,7 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-public class PhoneVerification {
+public class Checkout_Reminder {
     // Find your Account Sid and Auth Token at twilio.com/console
    // public static final String ACCOUNT_SID = System.getenv("AC22a079333dfce2bb0f6f868e667d1360");
     //public static final String AUTH_TOKEN = System.getenv("e7a500e12786e1ba915f5d2e69c79b24");
