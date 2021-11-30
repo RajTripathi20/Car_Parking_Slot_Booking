@@ -74,6 +74,7 @@
 }
 .home-section{
     position: relative;
+
     background: #fff;
     min-height: 100vh;
     width: calc(100% - 240px);
