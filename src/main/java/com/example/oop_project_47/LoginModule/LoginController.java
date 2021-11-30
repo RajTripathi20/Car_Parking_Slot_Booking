@@ -36,7 +36,7 @@ public class LoginController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Authenticate", method = RequestMethod.POST)
+    @RequestMapping(value = "/Dashboard", method = RequestMethod.POST)
     public ModelAndView loginUser(ModelAndView modelAndView, LoginCredentials loginCredentials) throws AddressException {
         LoginCredentials existingUser = loginRepository.findByUsername(loginCredentials.getUsername());
         //username = loginCredentials.getUsername();
