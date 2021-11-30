@@ -25,7 +25,7 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
 
 
-        if(carOwnerRepository.findUserByUsername(email_id)  ==null)
+        if(carOwnerRepository.findUserByUsername(email_id).equals(null))
         {
             carOwner.setAuthProvider(AuthenticationProvider.GOOGLE);
             carOwner.setEmail_id(email_id);
