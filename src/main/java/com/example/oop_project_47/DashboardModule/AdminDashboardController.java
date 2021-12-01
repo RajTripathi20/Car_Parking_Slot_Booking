@@ -35,7 +35,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/a/ParkingSpace", method = RequestMethod.GET)
+    @RequestMapping(value = "ParkingSpace", method = RequestMethod.GET)
     public ModelAndView displayParkingSpace(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -43,7 +43,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/a/Amenities", method = RequestMethod.GET)
+    @RequestMapping(value = "Amenities", method = RequestMethod.GET)
     public ModelAndView displayAmenities(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -51,7 +51,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/a/Report", method = RequestMethod.GET)
+    @RequestMapping(value = "Report", method = RequestMethod.GET)
     public ModelAndView displayReport(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -59,7 +59,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/a/AllUsers", method = RequestMethod.GET)
+    @RequestMapping(value = "AllUsers", method = RequestMethod.GET)
     public ModelAndView displayAllUsers(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -67,7 +67,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/a/Settings", method = RequestMethod.GET)
+    @RequestMapping(value = "Settings", method = RequestMethod.GET)
     public ModelAndView displaySetting(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
