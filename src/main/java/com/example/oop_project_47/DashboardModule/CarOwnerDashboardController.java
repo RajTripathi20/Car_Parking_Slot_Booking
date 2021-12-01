@@ -30,11 +30,36 @@ public class CarOwnerDashboardController implements WebMvcConfigurer {
 
     @GetMapping(value = "")
     public ModelAndView displayHome(ModelAndView modelAndView, CarOwner carOwner) {
-
-       // List<CarOwner> carOwnerList = carOwnerRepository.findUserById(userId);
-        //carOwnerId = loginController.getCarOwnerId();
         modelAndView.addObject("carOwner", carOwner);
         modelAndView.setViewName("/DashboardModule2/UserDashboard/HomeUserDashboard");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "BookingSlot")
+    public ModelAndView displayBookingSlot(ModelAndView modelAndView, CarOwner carOwner) {
+        modelAndView.addObject("carOwner", carOwner);
+        modelAndView.setViewName("/DashboardModule2/UserDashboard/BookingSlotUserDashboard");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "AllBookings")
+    public ModelAndView displayAllBookings(ModelAndView modelAndView, CarOwner carOwner) {
+        modelAndView.addObject("carOwner", carOwner);
+        modelAndView.setViewName("/DashboardModule2/UserDashboard/AllBookingUserDashboard");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "Wallet")
+    public ModelAndView displayWallet(ModelAndView modelAndView, CarOwner carOwner) {
+        modelAndView.addObject("carOwner", carOwner);
+        modelAndView.setViewName("/DashboardModule2/UserDashboard/WalletUserDashboard");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "Settings")
+    public ModelAndView displaySetting(ModelAndView modelAndView, CarOwner carOwner) {
+        modelAndView.addObject("carOwner", carOwner);
+        modelAndView.setViewName("/DashboardModule2/UserDashboard/SettingUserDashboard");
         return modelAndView;
     }
 }
