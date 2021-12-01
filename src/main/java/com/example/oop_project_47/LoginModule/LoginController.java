@@ -20,15 +20,13 @@ public class LoginController implements WebMvcConfigurer {
     private LoginRepository loginRepository;
 
     Admin admin = new Admin();
-    int i = 0;
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public ModelAndView displayLogin(ModelAndView modelAndView, LoginCredentials loginCredentials) {
-
-        if(i==0) {
+        LoginCredentials existingUser = loginRepository.findByUsername(admin.getUsername());
+        if(existingUser == null) {
             loginCredentials.setAdminCredentials(admin.getId(), "ADMIN", admin.getUsername(), admin.getPassword());
             loginRepository.save(loginCredentials);
-            i = 1;
         }
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -44,7 +42,7 @@ public class LoginController implements WebMvcConfigurer {
         if (existingUser != null) {
             if(loginCredentials.getUsername().equals(existingUser.getUsername())  && loginCredentials.getPassword().equals(existingUser.getPassword()))  {
                 if(existingUser.getUser_role().equals("ADMIN"))  {
-                    modelAndView.setViewName("/DashboardModule2/AdminDashboard/DashboardAdmin");
+                    modelAndView.setViewName("redirect:/Dashboard/a");
 
                 }
                 else if(existingUser.getUser_role().equals("CAR_OWNER"))  {
@@ -56,13 +54,11 @@ public class LoginController implements WebMvcConfigurer {
                 }
             }
             else {
-                modelAndView.addObject("message", "Invalid Username or Password");
                 modelAndView.setViewName("/index");
 
             }
         }
         else {
-            modelAndView.addObject("message", "Invalid Username or Password");
             modelAndView.setViewName("/index");
         }
         //modelAndView.setViewName("/DashboardModule2/AdminDashboard/DashboardAdmin");

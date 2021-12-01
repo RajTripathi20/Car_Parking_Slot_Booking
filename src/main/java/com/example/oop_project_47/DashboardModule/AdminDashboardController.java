@@ -16,7 +16,7 @@ import javax.mail.internet.AddressException;
 @Controller
 public class AdminDashboardController implements WebMvcConfigurer {
 
-    @RequestMapping(value = "/Dashboard", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dashboard/a", method = RequestMethod.GET)
     public ModelAndView displayHome(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -25,7 +25,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
     }
 
 
-    @RequestMapping(value = "/Dashboard/Bookings", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dashboard/a/Bookings", method = RequestMethod.GET)
     public ModelAndView displayBooking(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -33,7 +33,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/ParkingSpace", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dashboard/a/ParkingSpace", method = RequestMethod.GET)
     public ModelAndView displayParkingSpace(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -41,7 +41,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/Amenities", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dashboard/a/Amenities", method = RequestMethod.GET)
     public ModelAndView displayAmenities(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -49,7 +49,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/Report", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dashboard/a/Report", method = RequestMethod.GET)
     public ModelAndView displayReport(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -57,7 +57,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/AllUsers", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dashboard/a/AllUsers", method = RequestMethod.GET)
     public ModelAndView displayAllUsers(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -65,7 +65,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/Dashboard/Settings", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dashboard/a/Settings", method = RequestMethod.GET)
     public ModelAndView displaySetting(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
