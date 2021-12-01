@@ -6,6 +6,7 @@ import com.example.oop_project_47.LoginModule.LoginCredentials;
 import com.example.oop_project_47.LoginModule.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,9 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.mail.internet.AddressException;
 
 @Controller
+@RequestMapping("/Dashboard/a/")
 public class AdminDashboardController implements WebMvcConfigurer {
 
-    @RequestMapping(value = "/Dashboard/a", method = RequestMethod.GET)
+    @GetMapping(value = "")
     public ModelAndView displayHome(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
@@ -25,7 +27,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
     }
 
 
-    @RequestMapping(value = "/Dashboard/a/Bookings", method = RequestMethod.GET)
+    @GetMapping(value = "Bookings")
     public ModelAndView displayBooking(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
