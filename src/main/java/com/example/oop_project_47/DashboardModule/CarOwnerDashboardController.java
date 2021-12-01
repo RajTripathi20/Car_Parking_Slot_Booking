@@ -1,20 +1,38 @@
 package com.example.oop_project_47.DashboardModule;
 
+import com.example.oop_project_47.Admin.Admin;
 import com.example.oop_project_47.Car_Owner.CarOwner;
+import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
+import com.example.oop_project_47.LoginModule.LoginController;
 import com.example.oop_project_47.LoginModule.LoginCredentials;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.List;
+
 @Controller
+@RequestMapping("/Dashboard/c/")
 public class CarOwnerDashboardController implements WebMvcConfigurer {
 
-    @RequestMapping(value = "/Dashboard/u{userId}", method = RequestMethod.GET)
-    public ModelAndView displayHome(ModelAndView modelAndView, CarOwner carOwner, @PathVariable String userId) {
+    @Autowired
+    private CarOwnerRepository carOwnerRepository;
 
+    LoginController loginController = new LoginController();
+
+    Admin admin = new Admin();
+
+    int carOwnerId = loginController.getCarOwnerId();
+    final int userId = carOwnerId;
+
+    @GetMapping(value = "")
+    public ModelAndView displayHome(ModelAndView modelAndView, CarOwner carOwner) {
+
+       // List<CarOwner> carOwnerList = carOwnerRepository.findUserById(userId);
+        //carOwnerId = loginController.getCarOwnerId();
         modelAndView.addObject("carOwner", carOwner);
         modelAndView.setViewName("/DashboardModule2/UserDashboard/HomeUserDashboard");
         return modelAndView;

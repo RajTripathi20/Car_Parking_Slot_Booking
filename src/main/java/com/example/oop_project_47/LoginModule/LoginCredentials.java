@@ -48,6 +48,15 @@ public class LoginCredentials implements UserDetails {
     public LoginCredentials(LoginCredentials loginCredentials) {
     }
 
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getUser_role() {
         return user_role;
     }

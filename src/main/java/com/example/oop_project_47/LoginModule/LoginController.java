@@ -1,11 +1,9 @@
 package com.example.oop_project_47.LoginModule;
 
 import com.example.oop_project_47.Admin.Admin;
-import com.example.oop_project_47.Car_Owner.CarOwner;
 import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,24 +15,19 @@ public class LoginController implements WebMvcConfigurer {
     private String username;
     private String password;
     private boolean status;
+    private int carOwnerId;
+
+    public int getCarOwnerId() {
+        return carOwnerId;
+    }
 
     @Autowired
     private LoginRepository loginRepository;
-
     @Autowired
     private CarOwnerRepository carOwnerRepository;
 
+
     Admin admin = new Admin();
-
-  /*  @ModelAttribute("u")
-    public CarOwner findUser(@PathVariable("userId") int userId) {
-        return this.carOwnerRepository.findById(userId);
-    }
-
-    @InitBinder("u")
-    public void initUserBinder(WebDataBinder dataBinder) {
-        dataBinder.setDisallowedFields("id");
-    }*/
 
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
@@ -53,8 +46,9 @@ public class LoginController implements WebMvcConfigurer {
     @RequestMapping(value = "/Dashboard", method = RequestMethod.POST)
     public ModelAndView loginUser(ModelAndView modelAndView, LoginCredentials loginCredentials) throws AddressException {
         LoginCredentials existingUser = loginRepository.findByUsername(loginCredentials.getUsername());
-        //username = loginCredentials.getUsername();
-        //password = loginCredentials.getPassword();
+        //List<CarOwner> carOwnerList = carOwnerRepository.findUserById(userId);
+        //CarOwner carOwner = carOwnerRepository.findById(userId);
+        carOwnerId = existingUser.getId();
         if (existingUser != null) {
             if(loginCredentials.getUsername().equals(existingUser.getUsername())  && loginCredentials.getPassword().equals(existingUser.getPassword()))  {
                 if(existingUser.getUser_role().equals("ADMIN"))  {
@@ -62,10 +56,11 @@ public class LoginController implements WebMvcConfigurer {
 
                 }
                 else if(existingUser.getUser_role().equals("CAR_OWNER"))  {
-                    modelAndView.setViewName("redirect:/Dashboard/u{userId}");
+                    modelAndView.setViewName("redirect:/Dashboard/c/");
                     //Enter Owner Dashboard here
                 }
                 else if(existingUser.getUser_role().equals("WORKER"))  {
+                    modelAndView.setViewName("redirect:/Dashboard/w/");
                     //Enter Worker Dashboard here
                 }
             }
