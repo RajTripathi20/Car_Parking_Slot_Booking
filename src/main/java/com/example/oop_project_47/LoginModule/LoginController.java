@@ -34,7 +34,7 @@ public class LoginController implements WebMvcConfigurer {
     public ModelAndView displayLogin(ModelAndView modelAndView, LoginCredentials loginCredentials) {
         LoginCredentials existingUser = loginRepository.findByUsername(admin.getUsername());
         if(existingUser == null) {
-            loginCredentials.setAdminCredentials(admin.getId(), "ADMIN", admin.getUsername(), admin.getPassword());
+            loginCredentials.setAdminCredentials(admin.getId(), "ADMIN", admin.getUsername(), admin.getPassword(), admin.getEmail_id(), admin.getPhone_number());
             loginRepository.save(loginCredentials);
         }
 

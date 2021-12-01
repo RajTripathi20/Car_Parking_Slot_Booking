@@ -90,7 +90,24 @@
             <div class="recent-sales box">
                 <div class="title">All Users</div>
                 <div class="sales-details">
-                    <ul class="details">
+
+                    <table>
+                        <tr>
+                            <th>Username</th>
+                            <th>User_Type</th>
+                            <th>Email_ID</th>
+                            <th>Phone Number</th>
+
+                        </tr>
+
+                        <tr th:each="loginCredentials : ${allUserDetails}">
+                            <td th:text="${loginCredentials.username}"></td>
+                            <td th:text="${loginCredentials.user_role}"></td>
+                            <td th:text="${loginCredentials.email_id}"></td>
+                            <td th:text="${loginCredentials.phoneNumber}"></td>
+                        </tr>
+                        </table>
+                    <!--<ul class="details">
                         <li class="topic">Serial No.</li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
@@ -121,7 +138,7 @@
                         <li><a href="#">ghi@gmail.com</a></li>
                         <li><a href="#">jkl@gmail.com</a></li>
                         <li><a href="#">mno@gmail.com</a></li>
-                    </ul>
+                    </ul>-->
                 </div>
                 <div class="buttons">
                     <div class="button">

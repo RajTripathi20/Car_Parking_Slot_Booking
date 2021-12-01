@@ -54,7 +54,7 @@ public class Admin extends User {
     public String getPassword()  {return "admin";}
 
     @Override
-    public String getEmail_id()  {return "tripathiraj01@gmail.com";}
+    public String getEmail_id()  {return "bookit4747@gmail.com";}
 
     @Override
     public String getPhone_number()  {return "+18507897596";}

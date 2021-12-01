@@ -51,7 +51,7 @@ public class CarOwnerController {
     )*/
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView registerUser(ModelAndView modelAndView, CarOwner carOwner) {
-        carOwner.fillCarOwner();
+       // carOwner.fillCarOwner();
         String username = carOwner.getUsername();
         LoginCredentials existingUser = loginRepository.findByUsername(username);
         if ((existingUser != null)|| username.equals("admin")) {
@@ -61,7 +61,7 @@ public class CarOwnerController {
             return modelAndView;
         }
         else{
-            LoginCredentials loginCredentials = new LoginCredentials(carOwner.getId(), "CAR_OWNER", carOwner.getUsername(), carOwner.getPassword());
+            LoginCredentials loginCredentials = new LoginCredentials(carOwner.getId(), "CAR_OWNER", carOwner.getUsername(), carOwner.getPassword(), carOwner.getEmail_id(), carOwner.getPhone_number());
             carOwnerRepository.save(carOwner);
             loginRepository.save(loginCredentials);
             ConfirmationToken confirmationToken = new ConfirmationToken(carOwner);

@@ -28,17 +28,30 @@ public class LoginCredentials implements UserDetails {
     @NotEmpty
     private String password;
 
-    public void setAdminCredentials(Integer id, String user_role, String username, String password) {
+    @Column(name = "Phone_Number")
+    @NotEmpty
+    private String phoneNumber;
+
+    @Column(name = "Email_ID")
+    @NotEmpty
+    private String email_id;
+
+    public void setAdminCredentials(Integer id, String user_role, String username, String password, String email_id, String phoneNumber) {
         this.id = id;
         this.user_role = user_role;
         this.username = username;
         this.password = password;
+        this.email_id = email_id;
+        this.phoneNumber = phoneNumber;
     }
-    public LoginCredentials(Integer id, String user_role, String username, String password) {
+    public LoginCredentials(Integer id, String user_role, String username, String password, String email_id, String phoneNumber) {
         this.id = id;
         this.user_role = user_role;
         this.username = username;
         this.password = password;
+        this.email_id = email_id;
+        this.phoneNumber = phoneNumber;
+
     }
 
     public LoginCredentials() {
@@ -106,4 +119,19 @@ public class LoginCredentials implements UserDetails {
         this.password = password;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail_id() {
+        return email_id;
+    }
+
+    public void setEmail_id(String email_id) {
+        this.email_id = email_id;
+    }
 }
