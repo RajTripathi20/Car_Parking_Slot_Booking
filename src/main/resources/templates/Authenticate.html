@@ -16,5 +16,13 @@
     <div><label> Password: <input th:field="*{password}" type="password" name="password"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
 </form>
+
+<div id="googleLogin">
+    <form method="get" th:href="@{/oauth2/authorization/google}">
+        <button type="submit" class="button">
+            Sign in with Google
+        </button>
+    </form>
+</div>
 </body>
 </html>

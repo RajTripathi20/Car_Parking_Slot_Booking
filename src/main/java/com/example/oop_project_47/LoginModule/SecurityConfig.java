@@ -46,24 +46,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/SignUppage_1","/register","/forgot", "/ForgetPass","/oauth2/**").permitAll()
-                .antMatchers("/Dashboard Module 2/**").permitAll()
+                .antMatchers("/", "/SignUppage_1","/register","/forgot", "/ForgetPass","/oauth/**","/oauth2/**").permitAll()
                 //.anyRequest().authenticated()
-              /*  .and()
+                .and()
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/dashboard",true)
-                .loginProcessingUrl("/perform_login")
-                .failureUrl("/custom_login?error=true")
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login")
-                .and().oauth2Login()
-                */.and()
-                .formLogin() .loginPage("/signin").failureUrl("/signin.error")
-                .usernameParameter("username").passwordParameter("password")
-                .permitAll()/*
-                .defaultSuccessUrl("/dashboard",true)
+                .loginPage("/signin")
+                .and()
+                .oauth2Login().loginPage("/signin")
                 .userInfoEndpoint().userService(oAuth2UserService)
-                .and()*/
+                .and()
+
                 .and()
                 .logout().permitAll()
                 .permitAll();
