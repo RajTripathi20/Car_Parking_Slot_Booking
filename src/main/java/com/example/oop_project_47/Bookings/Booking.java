@@ -15,30 +15,33 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "Bookings")
-public class Bookings {
+public class Booking extends NamedEntity {
 
     @Id
     @Column(name = "BookingNumber")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "UserName")
+    @Column(name = "Username")
     @NotEmpty
     private String username;
 
-    @Column(name = "Checkin Time")
+    @Column(name = "Date")
+    @NotEmpty
+    private String date;
+
+    @Column(name = "Checkin_Time")
     @NotEmpty
     private String check_in;
 
-    @Column(name = "Checkout Time")
+    @Column(name = "Checkout_Time")
     @NotEmpty
     private String check_out;
 
-    @Column(name = "Parking Space")
+    @Column(name = "Parking_Space")
     @NotEmpty
     private String space;
 
-    @Column(name = "E-mail")
+    @Column(name = "Email_ID")
     @NotEmpty
     private String email;
 
@@ -60,6 +63,15 @@ public class Bookings {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getCheck_in() {

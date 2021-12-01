@@ -2,10 +2,15 @@ package com.example.oop_project_47.DashboardModule;
 
 
 import com.example.oop_project_47.Admin.Admin;
+import com.example.oop_project_47.Bookings.Booking;
+import com.example.oop_project_47.Bookings.BookingRepository;
+import com.example.oop_project_47.Car_Owner.CarOwner;
+import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
 import com.example.oop_project_47.LoginModule.LoginCredentials;
 import com.example.oop_project_47.LoginModule.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,17 +18,23 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.mail.internet.AddressException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/Dashboard/a/")
 public class AdminDashboardController implements WebMvcConfigurer {
 
-    @GetMapping(value = "")
-    public ModelAndView displayHome(ModelAndView modelAndView, LoginCredentials loginCredentials) {
+    @Autowired
+    private BookingRepository bookingRepository;
+    @Autowired
+    private LoginRepository loginRepository;
+    @Autowired
+    private CarOwnerRepository carOwnerRepository;
 
-        modelAndView.addObject("LoginCredentials", loginCredentials);
-        modelAndView.setViewName("/DashboardModule2/AdminDashboard/DashboardAdmin");
-        return modelAndView;
+    @GetMapping(value = "")
+    public String displayHome(ModelMap modelMap, Booking booking) {
+
+        return "/DashboardModule2/AdminDashboard/DashboardAdmin";
     }
 
 
@@ -62,7 +73,8 @@ public class AdminDashboardController implements WebMvcConfigurer {
     @RequestMapping(value = "AllUsers", method = RequestMethod.GET)
     public ModelAndView displayAllUsers(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
-        modelAndView.addObject("LoginCredentials", loginCredentials);
+        List<LoginCredentials> allUserDetails = loginRepository.findAll();
+        modelAndView.addObject("allUserDetails", allUserDetails);
         modelAndView.setViewName("/DashboardModule2/AdminDashboard/AllUsersAdmin");
         return modelAndView;
     }
