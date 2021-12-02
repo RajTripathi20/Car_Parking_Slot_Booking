@@ -31,11 +31,11 @@ public class Worker extends User {
 
     @Column(name = "Email_ID")
     @NotEmpty
-    private String email_id;
+    private String emailId;
 
     @Column(name = "Phone_Number")
     @NotEmpty
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(name = "Address")
     @NotEmpty
@@ -92,23 +92,23 @@ public class Worker extends User {
     }
 
     @Override
-    public String getEmail_id() {
-        return email_id;
+    public String getEmailId() {
+        return emailId;
     }
 
     @Override
-    public void setEmail_id(String email_id) {
-        this.email_id = email_id;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     @Override
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     @Override
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phone_number) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {

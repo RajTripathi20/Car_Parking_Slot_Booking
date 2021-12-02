@@ -17,9 +17,9 @@ public class User extends BaseEntity {
 
     private String password;
 
-    private String email_id;
+    private String emailId;
 
-    private String phone_number;
+    private String phoneNumber;
 
 
     public String getFirstName() {
@@ -56,20 +56,20 @@ public class User extends BaseEntity {
         this.password = password;
 
 
-    }   public String getEmail_id() {
-        return this.email_id;
+    }   public String getEmailId() {
+        return this.emailId;
     }
 
-    public void setEmail_id(String email_id) {
-        this.email_id = email_id;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
 
 
-    }   public String getPhone_number() {
-        return this.phone_number;
+    }   public String getPhoneNumber() {
+        return this.phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 }

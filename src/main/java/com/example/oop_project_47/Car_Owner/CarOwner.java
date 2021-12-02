@@ -36,11 +36,11 @@ public class CarOwner extends User implements UserDetails {
 
     @Column(name = "Email_ID")
     @NotEmpty
-    private String email_id;
+    private String emailId;
 
     @Column(name = "Phone_Number")
     @NotEmpty
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(name = "Car_Type")
     @NotEmpty
@@ -116,24 +116,20 @@ public class CarOwner extends User implements UserDetails {
         this.password = password;
     }
 
-    @Override
-    public String getEmail_id() {
-        return email_id;
+    public String getEmailId() {
+        return emailId;
     }
 
-    @Override
-    public void setEmail_id(String email_id) {
-        this.email_id = email_id;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
-    @Override
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    @Override
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getCarType() {
@@ -170,22 +166,22 @@ public class CarOwner extends User implements UserDetails {
 
     public CarOwner(User user) {
         this.username = user.getUsername();
-        this.email_id = user.getEmail_id();
+        this.emailId = user.getEmailId();
         this.password = user.getPassword();
         this.id = user.getId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
-        this.phone_number = user.getPhone_number();
+        this.phoneNumber = user.getPhoneNumber();
 
     }
 
     public void fillCarOwner() {
         this.username = super.getUsername();
-        this.email_id = super.getEmail_id();
+        this.emailId = super.getEmailId();
         this.password = super.getPassword();
         this.firstName = super.getFirstName();
         this.lastName = super.getLastName();
-        this.phone_number = super.getPhone_number();
+        this.phoneNumber = super.getPhoneNumber();
 
     }
 
