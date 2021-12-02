@@ -6,8 +6,11 @@ import com.example.oop_project_47.Bookings.Booking;
 import com.example.oop_project_47.Bookings.BookingRepository;
 import com.example.oop_project_47.Car_Owner.CarOwner;
 import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
+import com.example.oop_project_47.Car_Owner.ConfirmationToken;
 import com.example.oop_project_47.LoginModule.LoginCredentials;
 import com.example.oop_project_47.LoginModule.LoginRepository;
+import com.example.oop_project_47.Parking_Space.ParkingSpace;
+import com.example.oop_project_47.Parking_Space.ParkingSpaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,6 +29,8 @@ public class AdminDashboardController implements WebMvcConfigurer {
 
     @Autowired
     private BookingRepository bookingRepository;
+    @Autowired
+    private ParkingSpaceRepository parkingSpaceRepository;
     @Autowired
     private LoginRepository loginRepository;
     @Autowired
@@ -54,12 +59,45 @@ public class AdminDashboardController implements WebMvcConfigurer {
     }
 
     @RequestMapping(value = "ParkingSpace", method = RequestMethod.GET)
-    public ModelAndView displayParkingSpace(ModelAndView modelAndView, LoginCredentials loginCredentials) {
+    public ModelAndView displayParkingSpace(ModelAndView modelAndView, ParkingSpace parkingSpace) {
 
-        modelAndView.addObject("LoginCredentials", loginCredentials);
+        List<ParkingSpace> allSpaces = parkingSpaceRepository.findAll();
+        if(allSpaces.size() != 0)  {
+            modelAndView.addObject("allSpaces", allSpaces);
+        }
+        else  {
+            modelAndView.addObject("message", "No Spaces to Show!");
+
+        }
+
+
         modelAndView.setViewName("/DashboardModule2/AdminDashboard/ParkingSpacesAdmin");
         return modelAndView;
     }
+
+    @RequestMapping(value = "ParkingSpace/Add", method = RequestMethod.GET)
+    public ModelAndView displayParkingSpaceRegistration(ModelAndView modelAndView, ParkingSpace parkingSpace) {
+
+        modelAndView.addObject("ParkingSpace", parkingSpace);
+        modelAndView.setViewName("/DashboardModule2/AdminDashboard/AddParkingSpacesAdmin");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "ParkingSpace/Add", method = RequestMethod.POST)
+    public ModelAndView AddParkingSpace(ModelAndView modelAndView, ParkingSpace parkingSpace) {
+
+        ParkingSpace existingSpace = parkingSpaceRepository.findByAddress(parkingSpace.getAddress());
+        if (existingSpace != null) {
+            modelAndView.addObject("message", "Parking Space with given address already exists");
+            modelAndView.setViewName("/DashboardModule2/AdminDashboard/AddParkingSpacesAdmin");
+            return modelAndView;
+        } else {
+            parkingSpaceRepository.save(parkingSpace);
+            modelAndView.setViewName("redirect:/Dashboard/a/ParkingSpace");
+            return modelAndView;
+        }
+    }
+
 
     @RequestMapping(value = "Amenities", method = RequestMethod.GET)
     public ModelAndView displayAmenities(ModelAndView modelAndView, LoginCredentials loginCredentials) {

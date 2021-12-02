@@ -91,7 +91,26 @@
             <div class="recent-sales box">
                 <div class="title">Parking Spaces</div>
                 <div class="sales-details">
-                    <ul class="details">
+                    <table class="details">
+                        <tr  class="topic">
+                            <th>ID</th>
+                            <th>Location</th>
+                            <th>Address</th>
+                            <th>Number of Workers</th>
+
+                        </tr>
+
+                        <tr th:each="ParkingSpace : ${allSpaces}">
+                            <td th:text="${parkingSpace.id}"></td>
+                            <td th:text="${parkingSpace.location}"></td>
+                            <td th:text="${parkingSpace.address}"></td>
+                            <td th:text="${parkingSpace.workerCount}"></td>
+                        </tr>
+                    </table>
+                    <td th:text="${message}"></td>
+
+
+                    <!--<ul class="details">
                         <li class="topic">Select</li>
                         <li><input type="radio"><a href="#"></a></li>
                         <li><input type="radio"><a href="#"></a></li>
@@ -147,7 +166,7 @@
                         <li><a href="#">Abc</a></li>
                         <li><a href="#">Abc</a></li>
                         <li><a href="#">Abc</a></li>
-                    </ul>
+                    </ul>-->
                 </div>
                 <div class="buttons">
 
@@ -168,7 +187,7 @@
                         </div>
                     </div>
                     <div class="button">
-                        <a href="#">Add</a>
+                        <a th:href="@{/Dashboard/a/ParkingSpace/Add}">Add</a>
                     </div>
                     <div class="button">
                         <a href="#">View Space</a>

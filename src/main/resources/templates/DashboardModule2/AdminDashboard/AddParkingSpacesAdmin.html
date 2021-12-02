@@ -28,7 +28,7 @@
             </a>
         </li>
         <li>
-            <a href="@{/Dashboard/ParkingSpace}" class="active">
+            <a th:href="@{/Dashboard/a/ParkingSpace}" class="active">
                 <i class='bx bx-list-ul' ></i>
                 <span class="links_name">Parking Spaces</span>
             </a>
@@ -92,13 +92,13 @@
                 <div class="title">Add Parking Spaces</div>
                 <div class="registrationbox">
                     <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
-                    <form name='addParkingSpace' action="/perform_registration" method='POST'>
+                    <form name='addParkingSpace' th:action="@{/Dashboard/a/ParkingSpace/Add}" th:object="${parkingSpace}" method='POST'>
                         <div class="location">
-                            <td>Location:</td><br><input type="text" placeholder="Location">
+                            <td>Location:</td><br><input th:field="*{location}" type="text" name='location' placeholder="Location" required>
                             <i class='bx bx-search' ></i>
                         </div>
                         <div class="address">
-                            <td>Address:</td><br><input type="text" placeholder="Address">
+                            <td>Address:</td><br><input th:field="*{address}" type="text" name='address' placeholder="Address" required>
                             <i class='bx bx-search' ></i>
                         </div>
                         <br>
@@ -120,17 +120,22 @@
                             <td>No. of Buffer Slots:</td><br><input type="text" placeholder="0">
                             <i class='bx bx-search' ></i>
                         </div>
+                        <div class="buttons">
 
+                            <div class="button">
+                                <td>
+                                    <input name="submit" type="submit" value="Add" />
+                                </td>
+                                <td th:text="${message}"></td>
+
+                                <a href="#">Add</a>
+                            </div>
+                        </div>
                         <br>
                         <br>
                     </form>
                 </div>
-                <div class="buttons">
 
-                    <div class="button">
-                    <a href="#">Add</a>
-                    </div>
-                </div>
             </div>
         </div>
 

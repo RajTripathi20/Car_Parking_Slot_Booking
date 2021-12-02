@@ -15,5 +15,5 @@ public interface BookingRepository extends Repository<Booking, Integer> {
 
     Booking findByDate(LocalDate date);
     Long deleteById(Integer id);
-    void save(Booking diaryEntry);
+    void save(Booking booking);
 }
