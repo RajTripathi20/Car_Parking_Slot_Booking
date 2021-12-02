@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Parking Spaces Admin</title>
     <link rel="stylesheet" th:href="@{/style_admin.css}">
+    <!--<link rel="stylesheet" href="../../../static/style_admin.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -140,24 +141,20 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <div class="button">
-                        <a href="#">See All</a>
-                    </div>
+
                     <div class="button">
                         <a href="#">Edit</a>
                     </div>
-                    <div class="button">
-                        <a href="#">Delete</a>
+                    <div class="button" class="popup" onclick="myFunction()"><a href="#">Delete</a>
+                        <span class="popuptext" id="myPopup"></span>
+                    </div>
+
                     </div>
                     <div class="button">
                         <a href="#">Add</a>
                     </div>
-                    <div class="button">
-                        <a href="#">Save</a>
-                    </div>
-                    <div class="button">
-                        <a href="#">Filter</a>
-                    </div>
+
+
                 </div>
 
                 <script>
@@ -169,6 +166,11 @@
                             sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
                         }else
                             sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                    }
+                    // When the user clicks on <div>, open the popup
+                    function myFunction() {
+                        var popup = document.getElementById("myPopup");
+                        popup.classList.toggle("show");
                     }
                 </script>
 
