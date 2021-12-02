@@ -4,11 +4,9 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" dir="ltr">
 <head>
     <meta charset="UTF-8">
-
-
-  <link rel="stylesheet" th:href="@{/style_admin.css}">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style_admin.css}">
+    <!--<link rel="stylesheet" href="../../../static/style_admin.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="sidebar">
@@ -185,20 +183,7 @@
                         <li><a href="#">Not-Active</a></li>
                     </ul>
                 </div>
-                <div class="buttons">
-                    <div class="button">
-                        <a href="#">See All</a>
-                    </div>
-                    <div class="button">
-                        <a href="#">Edit</a>
-                    </div>
-                    <div class="button">
-                        <a href="#">Add</a>
-                    </div>
-                    <div class="button">
-                        <a href="#">Filter</a>
-                    </div>
-                </div>
+
 
 <script>
     let sidebar = document.querySelector(".sidebar");

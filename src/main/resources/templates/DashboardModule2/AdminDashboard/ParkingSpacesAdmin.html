@@ -92,6 +92,15 @@
                 <div class="title">Parking Spaces</div>
                 <div class="sales-details">
                     <ul class="details">
+                        <li class="topic">Select</li>
+                        <li><input type="radio"><a href="#"></a></li>
+                        <li><input type="radio"><a href="#"></a></li>
+                        <li><input type="radio"><a href="#"></a></li>
+                        <li><input type="radio"><a href="#"></a></li>
+                        <li><input type="radio"><a href="#"></a></li>
+
+                    </ul>
+                    <ul class="details">
                         <li class="topic">Serial No.</li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
@@ -145,13 +154,24 @@
                     <div class="button">
                         <a href="#">Edit</a>
                     </div>
-                    <div class="button" class="popup" onclick="myFunction()"><a href="#">Delete</a>
-                        <span class="popuptext" id="myPopup"></span>
-                    </div>
+                    <!-- Trigger/Open the Modal -->
+                    <div class="button">
+                        <button id="myBtn">Delete</button>
 
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                    <p>Are you sure you want to delete it?</p>
+                                    <button>Yes</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="button">
                         <a href="#">Add</a>
+                    </div>
+                    <div class="button">
+                        <a href="#">View Space</a>
                     </div>
 
 
@@ -167,10 +187,30 @@
                         }else
                             sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
                     }
-                    // When the user clicks on <div>, open the popup
-                    function myFunction() {
-                        var popup = document.getElementById("myPopup");
-                        popup.classList.toggle("show");
+                    // Get the modal
+                    var modal = document.getElementById("myModal");
+
+                    // Get the button that opens the modal
+                    var btn = document.getElementById("myBtn");
+
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("close")[0];
+
+                    // When the user clicks on the button, open the modal
+                    btn.onclick = function() {
+                        modal.style.display = "block";
+                    }
+
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
                     }
                 </script>
 
