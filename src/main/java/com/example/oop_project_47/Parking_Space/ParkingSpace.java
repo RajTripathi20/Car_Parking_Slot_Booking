@@ -4,43 +4,49 @@ import com.example.oop_project_47.Model.NamedEntity;
 import com.example.oop_project_47.Worker.Worker;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
 @Table(name = "Parking_Spaces")
-public class ParkingSpace extends NamedEntity {
+public class ParkingSpace {
 
     @Id
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "Location")
+    //@NotEmpty
     private String location;
 
     @Column(name = "Address")
+    //@NotEmpty
     private String address;
 
     @Column(name = "Hatchback_Slots")
+    //@NotEmpty
     private Integer hatchbackSlots;
 
     @Column(name = "Sedan_Slots")
+    //@NotEmpty
     private Integer sedanSlots;
 
     @Column(name = "SUV_Slots")
+    //@NotEmpty
     private Integer suvSlots;
 
     @Column(name = "Buffer_Slots")
+    //@NotEmpty
     private Integer bufferSlots;
 
     @Column(name = "Number_of_Workers")
+    //@NotEmpty
     private Integer workerCount;
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }

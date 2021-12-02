@@ -1,20 +1,20 @@
 package com.example.oop_project_47.Parking_Slot;
 
-import com.example.oop_project_47.Bookings.Booking;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface ParkingSlotRepository extends JpaRepository<ParkingSlot, String> {
 
 
-public interface ParkingSlotRepository extends Repository<ParkingSlot, Integer> {
+    //List<ParkingSlot> findAll();
 
-
-    List<ParkingSlot> findAll();
-
-    ParkingSlot findById(Integer id);
+    Optional<ParkingSlot> findById(Integer id);
 
    // ParkingSlot findByDate(LocalDate date);
-    Long deleteById(Integer id);
-    void save(ParkingSlot parkingSlot);
+    void deleteById(Integer id);
+    ParkingSlot save(ParkingSlot parkingSlot);
 }
