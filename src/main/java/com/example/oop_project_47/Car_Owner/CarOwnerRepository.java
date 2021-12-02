@@ -10,7 +10,7 @@ import org.springframework.data.repository.Repository;
 public interface CarOwnerRepository extends Repository<CarOwner, Integer> {
     Optional<CarOwner> findUserByUsername(String username);
     List<CarOwner> findAll();
-
+    CarOwner findUserByEmailId(String email_id);
 
     List<CarOwner> findUserById(Integer userId);
 

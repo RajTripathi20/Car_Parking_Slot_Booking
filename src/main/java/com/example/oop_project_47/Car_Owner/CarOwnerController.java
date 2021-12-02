@@ -61,7 +61,7 @@ public class CarOwnerController {
             return modelAndView;
         }
         else{
-            LoginCredentials loginCredentials = new LoginCredentials(carOwner.getId(), "CAR_OWNER", carOwner.getUsername(), carOwner.getPassword(), carOwner.getEmail_id(), carOwner.getPhone_number());
+            LoginCredentials loginCredentials = new LoginCredentials(carOwner.getId(), "CAR_OWNER", carOwner.getUsername(), carOwner.getPassword(), carOwner.getEmailId(), carOwner.getPhoneNumber());
             carOwnerRepository.save(carOwner);
             loginRepository.save(loginCredentials);
             ConfirmationToken confirmationToken = new ConfirmationToken(carOwner);

@@ -32,11 +32,11 @@ public class Admin extends User {
 
     @Column(name = "Email_ID")
     @NotEmpty
-    private String email_id;
+    private String emailId;
 
     @Column(name = "Phone_Number")
     @NotEmpty
-    private String phone_number;
+    private String phoneNumber;
 
     @Override
     public Integer getId()  {return 47;}
@@ -54,10 +54,10 @@ public class Admin extends User {
     public String getPassword()  {return "admin";}
 
     @Override
-    public String getEmail_id()  {return "bookit4747@gmail.com";}
+    public String getEmailId()  {return "bookit4747@gmail.com";}
 
     @Override
-    public String getPhone_number()  {return "+18507897596";}
+    public String getPhoneNumber()  {return "+18507897596";}
 
 
 
