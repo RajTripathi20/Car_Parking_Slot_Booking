@@ -9,14 +9,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "Parking Slots")
+@Table(name = "Parking_Slots")
 public class ParkingSlot extends NamedEntity {
 
     @Id
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "Slot Type")
+    @Column(name = "Slot_Type")
     @NotEmpty
     private String slotType;
 

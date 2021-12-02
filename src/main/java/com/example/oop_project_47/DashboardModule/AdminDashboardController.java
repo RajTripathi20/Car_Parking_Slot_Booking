@@ -39,9 +39,16 @@ public class AdminDashboardController implements WebMvcConfigurer {
 
 
     @GetMapping(value = "Bookings")
-    public ModelAndView displayBooking(ModelAndView modelAndView, LoginCredentials loginCredentials) {
+    public ModelAndView displayBooking(ModelAndView modelAndView, Booking booking) {
 
-        modelAndView.addObject("LoginCredentials", loginCredentials);
+        List<Booking> allBookings = bookingRepository.findAll();
+        if(allBookings.size() != 0)  {
+            modelAndView.addObject("allBookings", allBookings);
+    }
+        else  {
+            modelAndView.addObject("message", "No Bookings to Show!");
+
+        }
         modelAndView.setViewName("/DashboardModule2/AdminDashboard/Bookings_admin");
         return modelAndView;
     }

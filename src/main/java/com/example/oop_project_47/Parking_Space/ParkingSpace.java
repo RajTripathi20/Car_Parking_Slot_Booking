@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Parking Spaces")
+@Table(name = "Parking_Spaces")
 public class ParkingSpace extends NamedEntity {
 
     @Id
@@ -20,19 +20,19 @@ public class ParkingSpace extends NamedEntity {
     @Column(name = "Address")
     private String address;
 
-    @Column(name = "Hatchback Slots")
+    @Column(name = "Hatchback_Slots")
     private Integer hatchbackSlots;
 
-    @Column(name = "Sedan Slots")
+    @Column(name = "Sedan_Slots")
     private Integer sedanSlots;
 
-    @Column(name = "SUV Slots")
+    @Column(name = "SUV_Slots")
     private Integer suvSlots;
 
-    @Column(name = "Buffer Slots")
+    @Column(name = "Buffer_Slots")
     private Integer bufferSlots;
 
-    @Column(name = "Number of Workers")
+    @Column(name = "Number_of_Workers")
     private Integer workerCount;
 
     @Override

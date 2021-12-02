@@ -9,7 +9,7 @@ import java.util.List;
 public interface BookingRepository extends Repository<Booking, Integer> {
 
 
-    List<Booking> findAllByUsername(Booking booking);
+    List<Booking> findAll();
 
     Booking findById(Integer id);
 
