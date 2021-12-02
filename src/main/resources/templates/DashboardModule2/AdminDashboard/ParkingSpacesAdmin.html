@@ -100,11 +100,11 @@
 
                         </tr>
 
-                        <tr th:each="ParkingSpace : ${allSpaces}">
-                            <td th:text="${parkingSpace.id}"></td>
+                        <tr th:each="parkingSpace : ${allParkingSpaces}">
+                            <td th:text="${parkingSpace.id}" ></td>
                             <td th:text="${parkingSpace.location}"></td>
                             <td th:text="${parkingSpace.address}"></td>
-                            <td th:text="${parkingSpace.workerCount}"></td>
+                           <!-- <td th:text="${parkingSpace.workerCount}"></td> -->
                         </tr>
                     </table>
                     <td th:text="${message}"></td>

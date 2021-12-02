@@ -61,15 +61,14 @@ public class AdminDashboardController implements WebMvcConfigurer {
     @RequestMapping(value = "ParkingSpace", method = RequestMethod.GET)
     public ModelAndView displayParkingSpace(ModelAndView modelAndView, ParkingSpace parkingSpace) {
 
-        List<ParkingSpace> allSpaces = parkingSpaceRepository.findAll();
-        if(allSpaces.size() != 0)  {
-            modelAndView.addObject("allSpaces", allSpaces);
+        List<ParkingSpace> allParkingSpaces = parkingSpaceRepository.findAll();
+        if(allParkingSpaces.size() != 0)  {
+            modelAndView.addObject("allParkingSpaces", allParkingSpaces);
         }
         else  {
             modelAndView.addObject("message", "No Spaces to Show!");
 
         }
-
 
         modelAndView.setViewName("/DashboardModule2/AdminDashboard/ParkingSpacesAdmin");
         return modelAndView;
@@ -93,6 +92,7 @@ public class AdminDashboardController implements WebMvcConfigurer {
             return modelAndView;
         } else {
             parkingSpaceRepository.save(parkingSpace);
+            modelAndView.addObject("parkingSpace", parkingSpace);
             modelAndView.setViewName("redirect:/Dashboard/a/ParkingSpace");
             return modelAndView;
         }
@@ -119,7 +119,14 @@ public class AdminDashboardController implements WebMvcConfigurer {
     public ModelAndView displayAllUsers(ModelAndView modelAndView, LoginCredentials loginCredentials) {
 
         List<LoginCredentials> allUserDetails = loginRepository.findAll();
-        modelAndView.addObject("allUserDetails", allUserDetails);
+        if(allUserDetails.size() != 0)  {
+            modelAndView.addObject("allUserDetails", allUserDetails);
+        }
+        else  {
+            modelAndView.addObject("message", "No Spaces to Show!");
+
+        }
+       // modelAndView.addObject("allUserDetails", allUserDetails);
         modelAndView.setViewName("/DashboardModule2/AdminDashboard/AllUsersAdmin");
         return modelAndView;
     }
