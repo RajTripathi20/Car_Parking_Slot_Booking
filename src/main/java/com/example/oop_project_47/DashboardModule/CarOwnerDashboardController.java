@@ -56,7 +56,7 @@ public class CarOwnerDashboardController implements WebMvcConfigurer {
         return modelAndView;
     }
 
-    @GetMapping(value = "Settings")
+    @GetMapping(value = "Setting")
     public ModelAndView displaySetting(ModelAndView modelAndView, CarOwner carOwner) {
         modelAndView.addObject("carOwner", carOwner);
         modelAndView.setViewName("/DashboardModule2/UserDashboard/SettingUserDashboard");
