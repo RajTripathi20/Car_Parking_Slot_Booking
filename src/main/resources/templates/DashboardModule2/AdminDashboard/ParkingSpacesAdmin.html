@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Parking Spaces Admin</title>
-    <link rel="stylesheet" th:href="@{/style_admin.css}">
+    <link rel="stylesheet" th:href="@{/style_admin.css}" href="../../../static/style_admin.css">
     <!--<link rel="stylesheet" href="../../../static/style_admin.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -93,6 +93,7 @@
                 <div class="sales-details">
                     <table class="details">
                         <tr  class="topic">
+                            <th>Select</th>
                             <th>ID</th>
                             <th>Location</th>
                             <th>Address</th>
@@ -182,7 +183,7 @@
                             <div class="modal-content">
                                 <span class="close">&times;</span>
                                     <p>Are you sure you want to delete it?</p>
-                                    <button>Yes</button>
+                                    <button><a href="#"> Yes</a></button>
                             </div>
                         </div>
                     </div>

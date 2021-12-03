@@ -279,19 +279,18 @@ nav .profile-details i{
     font-weight: 500;
     /* margin-bottom: 10px; */
 }
-.sales-boxes .sales-details table{
+.sales-boxes .sales-details table {
+    width: 100%;
     border-spacing: 1em .5em;
     padding: 0 5em 1em 0;
 }
 .sales-boxes .sales-details table th{
     font-size: 20px;
     font-weight: 500;
-    justify-content: space-between;
 }
 .sales-boxes .sales-details table td{
     font-size: 18px;
     color: #333;
-
     text-decoration: none;
 }
 .sales-boxes .sales-details li.topic{
@@ -311,18 +310,17 @@ nav .profile-details i{
 .sales-boxes .box .buttons{
     display: -webkit-flex;
     display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
+    flex-direction: row-reverse;
 }
 .sales-boxes .box .button{
-    width: 100%;
-    /*display: flex;
-    justify-content: flex-end;*/
+    /*width: 100%;
+  display: flex;
+   justify-content: flex-end;*/
 }
-.sales-boxes .box .button a{
+.sales-boxes .box .button a,div .button #myBtn{
     color: #fff;
     background: #333333;
-    align-items: flex-end;
+    align-items: stretch;
     margin: 5px;
     padding: 4px 12px;
     font-size: 15px;
@@ -331,13 +329,16 @@ nav .profile-details i{
     text-decoration: none;
     transition: all 0.3s ease;
 }
-.sales-boxes .box .button a:hover{
+div .button #myBtn{
+    align-self: flex-start;
+}
+.sales-boxes .box .button a:hover,div .button #myBtn:hover{
     background:  #191919;
 }
-div .button #myBtn{
+/*div .button #myBtn{
     color: #fff;
     background: #333333;
-    align-items:end;
+    align-items:flex-end;
     margin: 2px;
     padding: 4px 12px;
     font-size: 13px;
@@ -348,7 +349,7 @@ div .button #myBtn{
 }
 div .button #myBtn:hover{
     background:  #191919;
-}
+}*/
 div .modal-content button{
     color: #fff;
     background: #333333;
