@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Booking Slot Screen 1 User Dashboard</title>
+    <link rel="stylesheet" th:href="@{/style_user.css}">
     <link rel="stylesheet" href="../../../static/style_user.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -78,6 +79,27 @@
             <div class="recent-sales box">
                 <div class="title">Slot information</div>
                 <div class="sales-details">
+                    <table class="details">
+                        <tr  class="topic">
+                            <th>ID</th>
+                            <th>Location</th>
+                            <th>Address</th>
+                            <th>Worker Rating</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                        <tr th:each="parkingSpace : ${nearBySpaces}">
+                            <td th:text="${parkingSpace.id}" ></td>
+                            <td th:text="${parkingSpace.location}"></td>
+                            <td th:text="${parkingSpace.address}"></td>
+                            <td th:text="${parkingSpace.address}"></td>
+                            <td th:text="${parkingSpace.status}"></td>
+                        </tr>
+                    </table>
+                    <td th:text="${message}"></td>
+
+
                     <ul class="details">
                         <li class="topic">Select</li>
                         <li><input type="radio"><a href="#"></a></li>
@@ -86,7 +108,7 @@
                         <li><input type="radio"><a href="#"></a></li>
                         <li><input type="radio"><a href="#"></a></li>
                     </ul>
-                    <ul class="details">
+                   <!-- <ul class="details">
                         <li class="topic">Location</li>
                         <li><a href="#">Begumpet</a></li>
                         <li><a href="#">Gachibowlli</a></li>
@@ -117,7 +139,7 @@
                         <li><a href="#">Available</a></li>
                         <li><a href="#">Available</a></li>
                         <li><a href="#">Available</a></li>
-                    </ul>
+                    </ul>-->
                 </div>
                 <div class="buttons">
                     <div class="button">

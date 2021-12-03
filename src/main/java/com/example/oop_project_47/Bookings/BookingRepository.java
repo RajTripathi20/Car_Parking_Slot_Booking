@@ -13,7 +13,7 @@ public interface BookingRepository extends Repository<Booking, Integer> {
 
     Booking findById(Integer id);
 
-    Booking findByDate(LocalDate date);
+    //Booking findByDate(LocalDate date);
     Long deleteById(Integer id);
     void save(Booking booking);
 }
