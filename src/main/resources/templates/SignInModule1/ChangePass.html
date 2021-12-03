@@ -4,25 +4,30 @@
 <head>
     <meta charset="UTF-8">
         <title>Change password </title>
+    <link rel="stylesheet" href="../../../static/style_signUp.css">
 </head>
 <body>
-<div id="sc-password">
+<div class="registrationbox">
     <h1>Change Password</h1>
-    <div class="sc-container">
+    <div class="reg>
         <form action="#"  th:action="@{/changepwd}" th:object="${user}" method="post">
-            <p>Here are a few guidelines for your password </p>
-            <p>Your password should have: </p>
-            <p>1. A minimum of 8 characters </p>
-            <p>2. At least 1 uppercase letter </p>
-            <p>3. At least 1 symbol </p>
-            <p>4. At least 1 number </p><br><br>
+            <td> Here are a few guidelines for your password </td><br>
+            <td> Your password should have: </td><br>
+            <td> 1. A minimum of 8 characters </td><br>
+            <td> 2. At least 1 uppercase letter </td><br>
+            <td> 3. At least 1 symbol </td><br>
+            <td> 4. At least 1 number </td><br><br>
 
-            <label>Enter new Password</label>
+            <label> Enter new Password</label>
 
             <input  th:field="*{password}" name="password" id="password" type="password" size="15" maxlength="100" onkeyup="return passwordChanged();" />
-            <span id="strength"></span>
-            <center><input type="reset" value="Clear"/></center><br><br>
-            <input type="submit" value="Submit" id="submit"></input>
+            <br><span id="strength"></span><br>
+            <tr>
+                <td>
+                    <input name="submit" type="submit" value="Submit" />
+                </td>
+            </tr>
+            <!--<input type="submit" value="Submit" id="submit"></input>-->
         </form>
 
     </div>
