@@ -317,7 +317,7 @@ nav .profile-details i{
   display: flex;
    justify-content: flex-end;*/
 }
-.sales-boxes .box .button a,div .button #myBtn{
+.sales-boxes .box .button a{
     color: #fff;
     background: #333333;
     align-items: stretch;
@@ -332,7 +332,22 @@ nav .profile-details i{
 div .button #myBtn{
     align-self: flex-start;
 }
-.sales-boxes .box .button a:hover,div .button #myBtn:hover{
+div .button #myBtn{
+    color: #fff;
+    background: #333333;
+    align-items:end;
+    margin: 0px 2px 0px 2px;
+    padding: 2px 6px 0px 6px;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+div .button #myBtn:hover{
+    background:  #191919;
+}
+.sales-boxes .box .button a:hover{
     background:  #191919;
 }
 /*div .button #myBtn{
@@ -363,6 +378,25 @@ div .modal-content button{
     transition: all 0.3s ease;
 }
 div .modal-content button:hover{
+    background:  #191919;
+}
+input[type="submit" i] {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: #333333;
+    align-items:start;
+    margin: 2px;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+input[type="submit" i] :hover{
     background:  #191919;
 }
 /* Right box */
@@ -439,6 +473,37 @@ div .slot {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+#radio1 {
+    display: none;
+}
+
+#wrapper {
+    /* NOTE: This wrapper div is not needed provided you can position the label for #radio1 on top of #radio2 using some other technique. */
+    position: relative;
+}
+
+#radio1:not(:checked) ~ * label[for="radio1"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#radio1:checked ~ * label[for="radio1"] {
+    display: none;
+}
+
+/* Non-essential styles: */
+
+label[for],
+label:not([for="radio1"]) {
+    cursor: pointer;
+    border-radius: 7px;
+}
+label[for]:hover + label,
+label:not([for="radio1"]):hover {
+    /*background-color: #ccc;*/
 }
 /* Responsive Media Query */
 @media (max-width: 1240px) {
