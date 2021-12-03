@@ -3,39 +3,43 @@
 <head>
     <title>Phone Verification</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../static/style_phoneVerification.css">
 </head>
 <body>
-
+<div class="box">
     <h1>Congratulations!</h1>
-    <h2> Your email has been verified!</h2>
-    <h4>There are just a few more steps to complete the process</h4>
-<div>
+
+    <div>
 
     <form th:action="@{/phonereg}" th:object="${userEntity}" method="post">
 
         <table id="mobreg">
             <td>
                 <centre>
-                    <h3>Enter Mobile number </h3>
-                    <label for="phoneNumber">Phone Number</label>
+                    <span> Your email has been verified!</span><br>
+                    <span>There are just a few more steps to complete the process</span><br>
+                    <span>Enter Mobile number </span><br>
+                    <br>
+                    <span for="phoneNumber">Phone Number</span><br>
                     <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phoneNumber">
                     <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
                     <br>
                     <br>
 
-                    <center><div class ="recaptcha" id="recaptcha-container"></div></center>
+                    <div class ="recaptcha" id="recaptcha-container"></div>
                     <button type="button" onclick="phoneAuth()">send code</button>
                     <br>
                     <br>
                     <br>
-                    <h3>Enter verification code</h3>
-                    <input type="text" id="verificationCode" placeholder="Enter verification code">
+                    <span>Enter verification code</span><br>
+                    <input type="text" id="verificationCode" placeholder="Enter verification code"><br>
                     <button type="button" onclick="codeverify()">Verify code</button>
 
                 </centre>
             </td>
         </table>
 
+    </div>
 </div>
 </body>
 
