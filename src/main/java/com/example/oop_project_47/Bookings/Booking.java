@@ -1,9 +1,11 @@
 package com.example.oop_project_47.Bookings;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import com.example.oop_project_47.Model.BaseEntity;
 import com.example.oop_project_47.Model.NamedEntity;
 import com.example.oop_project_47.Model.User;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,21 +27,23 @@ public class Booking extends NamedEntity {
     @NotEmpty
     private String username;
 
-    @Column(name = "Date")
+    @Column(name = "Checkin_DateTime")
     @NotEmpty
-    private String date;
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    private LocalDateTime checkIn;
 
-    @Column(name = "Checkin_Time")
+    @Column(name = "Checkout_DateTime")
     @NotEmpty
-    private String check_in;
-
-    @Column(name = "Checkout_Time")
-    @NotEmpty
-    private String check_out;
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    private LocalDateTime checkOut;
 
     @Column(name = "Parking_Space")
     @NotEmpty
     private String space;
+
+    @Column(name = "Location")
+    @NotEmpty
+    private String location;
 
     @Column(name = "Email_ID")
     @NotEmpty
@@ -66,28 +70,20 @@ public class Booking extends NamedEntity {
     }
 
 
-    public String getDate() {
-        return date;
+    public LocalDateTime getCheckIn() {
+        return checkIn;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setCheckIn(LocalDateTime checkIn) {
+        this.checkIn = checkIn;
     }
 
-    public String getCheck_in() {
-        return check_in;
+    public LocalDateTime getCheckOut() {
+        return checkOut;
     }
 
-    public void setCheck_in(String check_in) {
-        this.check_in = check_in;
-    }
-
-    public String getCheck_out() {
-        return check_out;
-    }
-
-    public void setCheck_out(String check_out) {
-        this.check_out = check_out;
+    public void setCheckOut(LocalDateTime checkOut) {
+        this.checkOut = checkOut;
     }
 
     public String getSpace() {
@@ -96,6 +92,14 @@ public class Booking extends NamedEntity {
 
     public void setSpace(String space) {
         this.space = space;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getEmail() {

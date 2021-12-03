@@ -43,6 +43,26 @@ public class ParkingSpace {
     //@NotEmpty
     private Integer workerCount;
 
+    @Column(name = "Hatchback_Status")
+    //@NotEmpty
+    private String hatchbackStatus = "Available";
+
+    @Column(name = "Sedan_Status")
+    //@NotEmpty
+    private String sedanStatus = "Available";
+
+    @Column(name = "SUV_Status")
+    //@NotEmpty
+    private String SUVStatus = "Available";
+
+    @Column(name = "Status")
+    //@NotEmpty
+    private String status = "Available";
+
+    @Column(name = "Worker_Rating")
+    //@NotEmpty
+    private Integer workerRating;
+
     public Integer getId() {
         return id;
     }
@@ -105,5 +125,45 @@ public class ParkingSpace {
 
     public void setWorkerCount(Integer workerCount) {
         this.workerCount = workerCount;
+    }
+
+    public String getHatchbackStatus() {
+        return hatchbackStatus;
+    }
+
+    public void setHatchbackStatus(String hatchbackStatus) {
+        this.hatchbackStatus = hatchbackStatus;
+    }
+
+    public String getSedanStatus() {
+        return sedanStatus;
+    }
+
+    public void setSedanStatus(String sedanStatus) {
+        this.sedanStatus = sedanStatus;
+    }
+
+    public String getSUVStatus() {
+        return SUVStatus;
+    }
+
+    public void setSUVStatus(String SUVStatus) {
+        this.SUVStatus = SUVStatus;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getWorkerRating() {
+        return workerRating;
+    }
+
+    public void setWorkerRating(Integer workerRating) {
+        this.workerRating = workerRating;
     }
 }

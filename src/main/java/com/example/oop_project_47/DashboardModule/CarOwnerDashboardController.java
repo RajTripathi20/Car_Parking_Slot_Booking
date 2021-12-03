@@ -1,6 +1,7 @@
 package com.example.oop_project_47.DashboardModule;
 
 import com.example.oop_project_47.Admin.Admin;
+import com.example.oop_project_47.Bookings.Booking;
 import com.example.oop_project_47.Car_Owner.CarOwner;
 import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
 import com.example.oop_project_47.LoginModule.LoginController;
@@ -36,8 +37,8 @@ public class CarOwnerDashboardController implements WebMvcConfigurer {
     }
 
     @GetMapping(value = "BookingSlot")
-    public ModelAndView displayBookingSlot(ModelAndView modelAndView, CarOwner carOwner) {
-        modelAndView.addObject("carOwner", carOwner);
+    public ModelAndView displayBookingSlot(ModelAndView modelAndView, Booking booking) {
+        modelAndView.addObject("booking", booking);
         modelAndView.setViewName("/DashboardModule2/UserDashboard/BookingSlotUserDashboard");
         return modelAndView;
     }
