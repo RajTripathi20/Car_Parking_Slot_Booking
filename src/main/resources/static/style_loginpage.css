@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-head {
-    /*font-family: Ebrima;*/
-}
-body {
-    background: #333333;
-    /*font-family: Ebrima;*/
+*{
     margin: 0;
     padding: 0;
-    /*background-image: url(../images/background.jpg);*/
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+body {
+
+    margin: 0;
+    padding: 0;
+    background:#333333;
     background-size: cover;
     background-position: center;
 }
@@ -16,7 +18,7 @@ body {
     margin-top: 0px;
     left: 50%;
     margin-left: 700px;
-    /*font-family: "Cambria Math";*/
+
 }
 #logo {
     margin-top: 50px;
@@ -75,7 +77,7 @@ h2{
     border: none;
     outline: none;
     height: 40px;
-    background:  #FCF6F5FF;
+    background: #D8BFD8;
     color: black;
     font-size: 18px;
     border-radius: 20px;
@@ -84,8 +86,8 @@ h2{
 .loginbox input[type="submit"]:hover
 {
     cursor: pointer;
-    background: #191919;
-    color: #FCF6F5FF;
+    background: #E6E6FA;
+    color: #006400;
 }
 
 .loginbox a{
@@ -169,4 +171,3 @@ h2{
     margin: 4px 2px;
     cursor: pointer;
     margin-left: 50px;
-}
