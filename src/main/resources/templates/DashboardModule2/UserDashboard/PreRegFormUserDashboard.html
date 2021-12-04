@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pre Registration Form User Dashboard</title>
-    <link rel="stylesheet" href="../../../static/style_user.css">
+    <link rel="stylesheet" th:href="@{/style_user.css}" href="../../../static/style_user.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -76,15 +76,16 @@
         <div class="sales-boxes">
             <div class="recent-sales box">
                 <div class="title">Book Slot</div>
+                <br>
                 <div class="registrationbox">
                     <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
                     <form name='registration' action="/perform_registration" method='POST'>
                         <div class="firstName">
-                            <div>First Name:</div><br><input type="text" placeholder="first name">
+                            <td>First Name:</td><br><input type="text" placeholder="First name">
                             <i class='bx bx-search' ></i>
                         </div>
                         <div class="lastName">
-                            <td>Last Name:</td><br><input type="text" placeholder="last name">
+                            <td>Last Name:</td><br><input type="text" placeholder="Last name">
                             <i class='bx bx-search' ></i>
                         </div>
                         <div class="mobileNo">
@@ -111,16 +112,12 @@
                             <td>Car Type:</td><br><input type="text" placeholder="Hatch Back">
                             <i class='bx bx-search' ></i>
                         </div>
-                        <div class="Date">
-                            <td>Date:</td><br><input type="text" placeholder="dd/mm/yyyy">
-                            <i class='bx bx-search' ></i>
-                        </div>
                         <div class="Check In">
-                            <td>Check In time:</td><br><input type="text" placeholder="24.00">
+                            <td>Check In time:</td><br><input type="datetime-local" placeholder="24.00">
                             <i class='bx bx-search' ></i>
                         </div>
                         <div class="Check Out">
-                            <td>Check Out time:</td><br><input type="text" placeholder="24.00">
+                            <td>Check Out time:</td><br><input type="datetime-local" placeholder="24.00">
                             <i class='bx bx-search' ></i>
                         </div>
 

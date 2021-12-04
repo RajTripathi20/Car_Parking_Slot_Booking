@@ -102,9 +102,12 @@
                         </tr>
 
                         <tr th:each="parkingSpace : ${allParkingSpaces}">
+                            <input type="radio" name="group1" id="radio1" checked="checked"  />
+                            <td id="wrapper"><label for="radio1"></label><label><input type="radio" name="group1" id="radio2" ><a href="#"></a></label></td>
                             <td th:text="${parkingSpace.id}" ></td>
                             <td th:text="${parkingSpace.location}"></td>
                             <td th:text="${parkingSpace.address}"></td>
+
                            <!-- <td th:text="${parkingSpace.workerCount}"></td> -->
                         </tr>
                     </table>

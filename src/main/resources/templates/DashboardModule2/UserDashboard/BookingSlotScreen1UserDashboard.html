@@ -81,6 +81,7 @@
                 <div class="sales-details">
                     <table class="details">
                         <tr  class="topic">
+                            <th>Select</th>
                             <th>ID</th>
                             <th>Location</th>
                             <th>Address</th>
@@ -90,12 +91,14 @@
                         </tr>
 
                         <tr th:each="parkingSpace : ${nearBySpaces}">
+                            <input type="radio" name="group1" id="radio1" checked="checked"  />
+                            <td id="wrapper"><label for="radio1"></label><label><input type="radio" name="group1" id="radio2" ><a href="#"></a></label></td>
                             <td th:text="${parkingSpace.id}" ></td>
                             <td th:text="${parkingSpace.location}"></td>
                             <td th:text="${parkingSpace.address}"></td>
                             <td th:text="${parkingSpace.address}"></td>
                             <td th:text="${parkingSpace.status}"></td>
-                            <td><input type="radio"><a href="#"></a></td>
+
                         </tr>
                     </table>
                     <td th:text="${message}"></td>
@@ -161,6 +164,37 @@
                         }else
                             sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
                     }
+                    /*document.getElementById('desiredInput').checked = false;
+                    var radios = document.getElementsByTagName('input');
+                    for(i=0; i<radios.length; i++ ) {
+                        radios[i].onclick = function(e) {
+                            if(e.ctrlKey || e.metaKey) {
+                                this.checked = false;
+                            }
+                        }
+                    }*/
+
+                    /*function deselectable() {
+                        setTimeout(checked => this.checked = !checked, 0, this.checked);
+                    }
+                    radio.onmouseup = deselectable();
+                    function deselectableRadios(rootElement) {
+                        if(!rootElement) rootElement = document;
+                        if(!window.radioChecked) window.radioChecked = {};
+                        window.radioClick = function(e) {
+                            const obj = e.target, name = obj.name || "unnamed";
+                            if(e.keyCode) return obj.checked = e.keyCode!=32;
+                            obj.checked = window.radioChecked[name] != obj;
+                            window.radioChecked[name] = obj.checked ? obj : null;
+                        }
+                        rootElement.querySelectorAll("input[type='radio']").forEach( radio => {
+                            radio.setAttribute("onclick", "radioClick(event)");
+                            radio.setAttribute("onkeyup", "radioClick(event)");
+                        });
+                    }
+
+                    deselectableRadios();
+                    }*/
                 </script>
 
 </body>
