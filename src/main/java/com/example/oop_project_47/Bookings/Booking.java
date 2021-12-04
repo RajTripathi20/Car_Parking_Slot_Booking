@@ -2,7 +2,6 @@ package com.example.oop_project_47.Bookings;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import com.example.oop_project_47.Model.BaseEntity;
 import com.example.oop_project_47.Model.NamedEntity;
 import com.example.oop_project_47.Model.User;
 import org.springframework.format.annotation.DateTimeFormat;

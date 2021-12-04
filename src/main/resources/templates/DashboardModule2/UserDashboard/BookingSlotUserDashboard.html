@@ -5,6 +5,7 @@
     <title>Booking slot User</title>
     <!--<link rel="stylesheet" href="../../../static/style_user.css">-->
     <link rel="stylesheet" th:href="@{/style_user.css}" href="../../../static/style_user.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -79,7 +80,7 @@
                 <div class="title">Book Slot</div>
                 <div class="registrationbox">
                     <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
-                    <form name='booking' th:action="@{/Dashboard/a/ParkingSpace/SpaceInformation}" th:object="${booking}" method='POST'>
+                    <form name='booking' th:action="@{/Dashboard/c/ParkingSpace/SpaceInformation}" th:object="${booking}" method='POST'>
                         <div class="location">
                             <td>Location:</td><br><input th:field="*{location}" type="text" name='location' placeholder="location" required>
                             <i class='bx bx-search' ></i>

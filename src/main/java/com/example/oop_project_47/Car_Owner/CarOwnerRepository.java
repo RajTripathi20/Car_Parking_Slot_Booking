@@ -11,6 +11,7 @@ public interface CarOwnerRepository extends Repository<CarOwner, Integer> {
     Optional<CarOwner> findUserByUsername(String username);
     List<CarOwner> findAll();
     CarOwner findUserByEmailId(String email_id);
+    CarOwner findUserByPhoneNumber(String phoneNumber);
 
     List<CarOwner> findUserById(Integer userId);
 
