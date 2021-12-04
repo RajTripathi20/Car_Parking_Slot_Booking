@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Forget Password</title>
+    <link rel="stylesheet" th:href="@{/style_ForgetPass.css}">
+    <link rel="stylesheet" href="../../../static/style_ForgetPass.css">
 </head>
 <body>
 <div id="forgot">
     <h1>Forgot Password</h1>
 
     <div class="forgot-container">
-<!--
-        <form action="#" th:action="@{/pass_change}" th:object="${user}" method="post">
+
+        <form th:action="@{/pass_change}" th:object="${carOwner}" method="post">
 
             <label >Email</label>
-            <input th:field="*{email}" type="text" name="emailId">
+            <input th:field="*{emailId}" type="text" name="emailId">
 
-            <input type="reset" value="Clear"/></><br><br>
+            <input type="reset" value="Clear"/><br><br>
             <input type="submit" value="Submit">
 
         </form>
-        -->
+
         <!--
                 <form th:action="@{/pass_change}" method="post">
                     <div><label> User Name : <input th:field="*{email}" type="text" name="emailId"> </label></div>

@@ -36,6 +36,7 @@ public class CarOwnerController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView displayRegistration(ModelAndView modelAndView, CarOwner carOwner) {
+
         modelAndView.addObject("CarOwner", carOwner);
         modelAndView.setViewName("/SignUppage_1");
         return modelAndView;
@@ -50,15 +51,25 @@ public class CarOwnerController {
     )*/
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView registerUser(ModelAndView modelAndView, CarOwner carOwner) {
-        carOwner.fillCarOwner();
-        LoginCredentials loginCredentials = new LoginCredentials(carOwner.getId() , "CAR_OWNER", carOwner.getUsername(), carOwner.getPassword());
-        carOwnerRepository.save(carOwner);
-        loginRepository.save(loginCredentials);
-        ConfirmationToken confirmationToken = new ConfirmationToken(carOwner);
+       // carOwner.fillCarOwner();
+        String username = carOwner.getUsername();
+        LoginCredentials existingUser = loginRepository.findByUsername(username);
+        if ((existingUser != null)|| username.equals("admin")) {
+            modelAndView.addObject("message", "This username already in use!");
 
-        confirmationTokenRepository.save(confirmationToken);
-        modelAndView.setViewName("/SuccessfulRegistration");
-        return modelAndView;
+            modelAndView.setViewName("/SignUppage_1");
+            return modelAndView;
+        }
+        else{
+            LoginCredentials loginCredentials = new LoginCredentials(carOwner.getId(), "CAR_OWNER", carOwner.getUsername(), carOwner.getPassword(), carOwner.getEmailId(), carOwner.getPhoneNumber());
+            carOwnerRepository.save(carOwner);
+            loginRepository.save(loginCredentials);
+            ConfirmationToken confirmationToken = new ConfirmationToken(carOwner);
+
+            confirmationTokenRepository.save(confirmationToken);
+            modelAndView.setViewName("/SignInModule1/OTPphoneVerification");
+            return modelAndView;
+        }
     }
        /* CarOwner carOwner = new CarOwner();
         carOwner.setUsername(body.get("username"));

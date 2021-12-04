@@ -1,77 +1,142 @@
 package com.example.oop_project_47.LoginModule;
 
 import com.example.oop_project_47.Admin.Admin;
-import com.example.oop_project_47.Admin.AdminLoginController;
-import com.example.oop_project_47.Model.User;
+import com.example.oop_project_47.Car_Owner.CarOwner;
+import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
+import com.example.oop_project_47.Car_Owner.ConfirmationToken;
+import com.example.oop_project_47.Car_Owner.ConfirmationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.mail.internet.AddressException;
-import javax.validation.Valid;
+
 @Controller
 public class LoginController implements WebMvcConfigurer {
     private String username;
+    private String emailId;
     private String password;
     private boolean status;
+    private int carOwnerId;
+
+    public int getCarOwnerId() {
+        return carOwnerId;
+    }
+    @Value("${host.name}")
+    private String localhost;
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private LoginRepository loginRepository;
+    @Autowired
+    private ConfirmationTokenRepository confirmationTokenRepository;
+    @Autowired
+    private CarOwnerRepository carOwnerRepository;
+
 
     Admin admin = new Admin();
-    int i = 0;
-       //     if(i==0) {
-       // oginCredentials.setAdminCredentials(admin.getId(), "ADMIN", admin.getUsername(), admin.getPassword());
-        //loginRepository.save(loginCredentials);
-        //i = 1;
-    //}
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public ModelAndView displayLogin(ModelAndView modelAndView, LoginCredentials loginCredentials) {
+        LoginCredentials existingUser = loginRepository.findByUsername(admin.getUsername());
+        if(existingUser == null) {
+            loginCredentials.setAdminCredentials(admin.getId(), "ADMIN", admin.getUsername(), admin.getPassword(), admin.getEmailId(), admin.getPhoneNumber());
+            loginRepository.save(loginCredentials);
+        }
 
         modelAndView.addObject("LoginCredentials", loginCredentials);
         modelAndView.setViewName("/Authenticate");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/Dashboard", method = RequestMethod.POST)
     public ModelAndView loginUser(ModelAndView modelAndView, LoginCredentials loginCredentials) throws AddressException {
         LoginCredentials existingUser = loginRepository.findByUsername(loginCredentials.getUsername());
-        //username = loginCredentials.getUsername();
-        //password = loginCredentials.getPassword();
-     /*   if (existingUser != null) {
-            if(loginCredentials.getUsername() == existingUser.getUsername()  && loginCredentials.getPassword() == existingUser.getPassword())  {
-                if(existingUser.getUser_role()=="ADMIN")  {
-                    modelAndView.setViewName("/DashboardModule2/AdminDashboard/DashboardAdmin");
+        //List<CarOwner> carOwnerList = carOwnerRepository.findUserById(userId);
+        //CarOwner carOwner = carOwnerRepository.findById(userId);
+        carOwnerId = existingUser.getId();
+        if (existingUser != null) {
+            if(loginCredentials.getUsername().equals(existingUser.getUsername())  && loginCredentials.getPassword().equals(existingUser.getPassword()))  {
+                if(existingUser.getUser_role().equals("ADMIN"))  {
+                    modelAndView.setViewName("redirect:/Dashboard/a/");
 
                 }
-                else if(existingUser.getUser_role()=="CAR_OWNER")  {
-                    modelAndView.setViewName("/DashboardModule2/AdminDashboard/AllUsersAdmin");
+                else if(existingUser.getUser_role().equals("CAR_OWNER"))  {
+                    modelAndView.setViewName("redirect:/Dashboard/c/");
                     //Enter Owner Dashboard here
                 }
-                else if(existingUser.getUser_role()=="WORKER")  {
+                else if(existingUser.getUser_role().equals("WORKER"))  {
+                    modelAndView.setViewName("redirect:/Dashboard/w/");
                     //Enter Worker Dashboard here
                 }
             }
             else {
-                modelAndView.addObject("message", "Invalid Username or Password");
-                modelAndView.setViewName("/LandingPage");
+                modelAndView.setViewName("/index");
 
             }
         }
         else {
-            modelAndView.addObject("message", "Invalid Username or Password");
-            modelAndView.setViewName("/LandingPage");
-        }*/
-        modelAndView.setViewName("/DashboardModule2/AdminDashboard/DashboardAdmin");
+            modelAndView.setViewName("/index");
+        }
+        //modelAndView.setViewName("/DashboardModule2/AdminDashboard/DashboardAdmin");
         return modelAndView;
+    }
+    @RequestMapping(value = "/forgot", method = RequestMethod.GET)
+    public ModelAndView forgotPass(ModelAndView modelAndView, CarOwner carOwner) {
+
+        modelAndView.addObject("CarOwner", carOwner);
+        modelAndView.setViewName("/ForgetPass");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/pass_change", method = RequestMethod.POST)
+    public ModelAndView PassChange(ModelAndView modelAndView, CarOwner carOwner) {
+        CarOwner existingUser =carOwnerRepository.findUserByEmailId(carOwner.getEmailId());
+        if (existingUser == null) {
+            modelAndView.addObject("message", "This email Does not exist!");
+
+            modelAndView.setViewName("/index");
+            return modelAndView;
+        }
+        else  {
+            emailId =existingUser.getEmailId();
+            carOwner =carOwnerRepository.findUserByEmailId(emailId);
+            ConfirmationToken confirmationToken = new ConfirmationToken(existingUser);
+            confirmationTokenRepository.save(confirmationToken);
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setTo(existingUser.getEmailId());
+            mailMessage.setSubject("Request for Password change ");
+            mailMessage.setText("Please click this link to change your password : "
+                    + "http://" + localhost + ":8080/change-password?token=" + confirmationToken.getConfirmationToken());
+
+            emailService.sendEmail(mailMessage);
+
+            modelAndView.addObject("emailId", emailId);
+            modelAndView.setViewName("/PasswordChange");
+            return modelAndView;
+    }
+    }
+    @RequestMapping(value = "/PhoneVerification", method = RequestMethod.GET)
+    public ModelAndView phoneVerification(ModelAndView modelAndView, CarOwner carOwner) {
+
+        modelAndView.addObject("CarOwner", carOwner);
+        modelAndView.setViewName("/SignInModule1/OTPphoneVerification");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/PhoneVerification",  method = { RequestMethod.POST})
+    public void succesfulVerification(ModelAndView modelAndView,CarOwner carOwner)
+    {
+        CarOwner fin= carOwnerRepository.findUserByEmailId(emailId);
+        fin.setPhoneNumber(carOwner.getPhoneNumber());
+        carOwnerRepository.save(fin);
+
     }
 
 }

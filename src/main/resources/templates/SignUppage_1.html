@@ -2,13 +2,54 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
                       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
     <meta charset="UTF-8">
     <title>Sign Up</title>
+    <link rel="stylesheet" th:href="@{/style_signUp.css}">
+    <link rel="stylesheet" href="../../../static/style_signUp.css">
 </head>
+
 <body>
 <div class="registrationbox">
+    <h1>Sign up!</h1>
     <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
-    <form name='registration' th:action="@{/register}" th:object="${carOwner}" method='POST'>
+    <div class="reg">
+        <form name='registration' th:action="@{/register}" th:object="${carOwner}" method='POST'>
         <tr>
             <td>First Name: <br></td>
             <td><input th:field="*{firstName}" type='text' name='firstName' required></input></td>
@@ -27,14 +68,16 @@
         <br>
         <tr>
             <td>Password:</td><br>
-            <td><input th:field="*{password}" type='password' id='password' name='password' onkeyup="return passwordStrength();" required/></td>
+            <td><input th:field="*{password}" type='password' id='password' name='password' onkeyup="return passwordStrength();" required/></input></td>
         </tr>
+            <br>
         <span id="strength"></span>
         <br>
         <tr>
             <td>Confirm Password:</td><br>
-            <td><input type='password' id='confirmPassword' name='confirmPassword' onkeyup="return pwd_matcher();" required/></td>
+            <td><input type='password' id='confirmPassword' name='confirmPassword' onkeyup="return pwd_matcher();" required/></input></td>
         </tr>
+            <br>
         <span id="match"></span>
         <br>
         <tr>
@@ -44,17 +87,18 @@
         <br>
         <tr>
             <td>Email ID:</td><br>
-            <td><input th:field="*{email_id}" type='text' name='email_id'  required></input></td>
+            <td><input th:field="*{emailId}" type='text' name='emailId'  required></input></td>
         </tr>
         <br>
         <tr>
             <td>Mobile No.:</td><br>
-            <td><input th:field="*{phone_number}" type='text' name='phone_number'  required></input></td>
+            <td><input th:field="*{phoneNumber}" type='text' name='phoneNumber'  required></input></td>
         </tr>
         <br>
         <tr>
-            <td>Car Registration no.:</td><br>
+            <td>Car Registration No.:</td><br>
             <td><input th:field="*{carRegistrationNumber}" type='text' name='carRegistrationNumber'  required></input></td>
+            <td th:text="${message}"></td>
         </tr>
         <br>
         <label for="carType">Car Type:</label><br>
@@ -71,8 +115,8 @@
             </td>
         </tr>
     </form>
-    <script>
-    </script>
+    </div>
+
     <script>
         function pwd_matcher() {
             const button=document.getElementById('submit');
@@ -117,6 +161,6 @@
             }
         }
     </script>
-</div>
+
 </body>
 </html>

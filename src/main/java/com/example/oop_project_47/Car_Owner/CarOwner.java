@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -15,7 +16,6 @@ import org.springframework.security.core.GrantedAuthority;
 public class CarOwner extends User implements UserDetails {
 
     @Column(name = "ID")
-    @NotEmpty
     private Integer id;
 
     @Column(name = "First_Name")
@@ -36,11 +36,11 @@ public class CarOwner extends User implements UserDetails {
 
     @Column(name = "Email_ID")
     @NotEmpty
-    private String email_id;
+    private String emailId;
 
     @Column(name = "Phone_Number")
     @NotEmpty
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(name = "Car_Type")
     @NotEmpty
@@ -54,6 +54,83 @@ public class CarOwner extends User implements UserDetails {
     @NotEmpty
     private String carRegistrationNumber;
 
+    public AuthenticationProvider getAuthProvider() {
+        return authProvider;
+    }
+
+    public void setAuthProvider(AuthenticationProvider authProvider) {
+        this.authProvider = authProvider;
+    }
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "auth_provider")
+    private AuthenticationProvider authProvider;
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getFirstName() {
+        return firstName;
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getCarType() {
         return this.carType;
@@ -82,43 +159,41 @@ public class CarOwner extends User implements UserDetails {
 
 
     }
-    @Enumerated(EnumType.STRING)
-    @Column(name = "auth_provider")
-    private AuthenticationProvider authProvider;
+
 
     public CarOwner() {
     }
-    public  CarOwner(User user)
-    {
-        this.username=user.getUsername();
-        this.email_id=user.getEmail_id();
-        this.password=user.getPassword();
-        this.id=user.getId();
-        this.firstName=user.getFirstName();
-        this.lastName=user.getLastName();
-        this.phone_number=user.getPhone_number();
+
+    public CarOwner(User user) {
+        this.username = user.getUsername();
+        this.emailId = user.getEmailId();
+        this.password = user.getPassword();
+        this.id = user.getId();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.phoneNumber = user.getPhoneNumber();
 
     }
-    public void fillCarOwner()
-    {
-        this.username=super.getUsername();
-        System.out.println(super.getUsername());
-        this.email_id=super.getEmail_id();
-        this.password=super.getPassword();
-        this.firstName=super.getFirstName();
-        this.lastName=super.getLastName();
-        this.phone_number=super.getPhone_number();
+
+    public void fillCarOwner() {
+        this.username = super.getUsername();
+        this.emailId = super.getEmailId();
+        this.password = super.getPassword();
+        this.firstName = super.getFirstName();
+        this.lastName = super.getLastName();
+        this.phoneNumber = super.getPhoneNumber();
 
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
-        @Override
-        public boolean isAccountNonExpired() {
-            return true;
-        }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
     @Override
     public boolean isAccountNonLocked() {
@@ -132,10 +207,6 @@ public class CarOwner extends User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-            return true;
+        return true;
     }
-
-    public void setAuthProvider(AuthenticationProvider authProvider) {
-        this.authProvider = authProvider;
-    } }
-
+}
