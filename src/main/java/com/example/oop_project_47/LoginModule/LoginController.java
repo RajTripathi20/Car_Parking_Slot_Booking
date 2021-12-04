@@ -123,7 +123,21 @@ public class LoginController implements WebMvcConfigurer {
             return modelAndView;
     }
     }
+    @RequestMapping(value = "/PhoneVerification", method = RequestMethod.GET)
+    public ModelAndView phoneVerification(ModelAndView modelAndView, CarOwner carOwner) {
 
+        modelAndView.addObject("CarOwner", carOwner);
+        modelAndView.setViewName("/SignInModule1/OTPphoneVerification");
+        return modelAndView;
+    }
+    @RequestMapping(value = "/PhoneVerification",  method = { RequestMethod.POST})
+    public void succesfulVerification(ModelAndView modelAndView,CarOwner carOwner)
+    {
+        CarOwner fin= carOwnerRepository.findUserByEmailId(emailId);
+        fin.setPhoneNumber(carOwner.getPhoneNumber());
+        carOwnerRepository.save(fin);
+
+    }
 
 }
 

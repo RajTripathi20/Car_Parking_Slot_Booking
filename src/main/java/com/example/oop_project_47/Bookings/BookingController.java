@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/Dashboard/a/ParkingSpace/")
+@RequestMapping(value = "/Dashboard/c/ParkingSpace/")
 public class BookingController {
     @Autowired
     private ParkingSpaceRepository parkingSpaceRepository;
