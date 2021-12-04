@@ -67,7 +67,7 @@ public class CarOwnerController {
             ConfirmationToken confirmationToken = new ConfirmationToken(carOwner);
 
             confirmationTokenRepository.save(confirmationToken);
-            modelAndView.setViewName("/SuccessfulRegistration");
+            modelAndView.setViewName("/SignInModule1/OTPphoneVerification");
             return modelAndView;
         }
     }
