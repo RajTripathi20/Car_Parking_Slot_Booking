@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Payment Confirmation User Dashboard</title>
-    <link rel="stylesheet" href="../../../static/style_user.css">
+    <title>Booked Slot User Dashboard</title>
+    <link rel="stylesheet" th:href="@{/style_user.css}" href="../../../static/style_user.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -75,8 +75,7 @@
 
         <div class="sales-boxes">
             <div class="recent-sales box">
-                <div class="title">Check Out</div>
-                <br>
+                <div class="title">Slot Booked!</div>
                 <br>
                 <div class="registrationbox">
                     <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
@@ -88,61 +87,29 @@
                         <td><bold>Location:</bold><span> Shameerpet </span></td><br>
                         <i class='bx bx-search' ></i>
                     </div>
-                    <div class="Total Time">
-                        <td><bold>Total Time:</bold><span> XX.XX </span></td><br>
+                    <div class="CheckIn">
+                        <td><bold>Check In Time:</bold><span> XX.XX </span></td><br>
                         <i class='bx bx-search' ></i>
                     </div>
-                    <div class="Total Amount">
-                        <td><bold>Total Amount:</bold><span> XX </span></td><br>
+                    <div class="CheckOut">
+                        <td><bold>Check Out Time:</bold><span> XX.XX </span></td><br>
+                        <i class='bx bx-search' ></i>
+                    </div>
+                    <div class="CarType">
+                        <td><bold>Car Type:</bold><span> Sedan </span></td><br>
                         <i class='bx bx-search' ></i>
                     </div>
                     <br>
                     <br>
                     <br>
                     <div class="AdditionalFeatures">
-                        <td><bold>Add additional Features:</bold>
-                            <div >Features</div>
                             <div class="sales-details">
-                                <ul class="details">
-                                    <li class="topic">Select</li>
-                                    <li><input type="checkbox"><a href="#"></a></li>
-                                    <li><input type="checkbox"><a href="#"></a></li>
-                                    <li><input type="checkbox"><a href="#"></a></li>
-                                    <li><input type="checkbox"><a href="#"></a></li>
-
-                                </ul>
-                                <ul class="details">
-                                    <li class="topic">Facility</li>
-                                    <li><a href="#">Car Wash</a></li>
-                                    <li><a href="#">Wheel Alignment</a></li>
-                                    <li><a href="#">Dry Cleaning</a></li>
-                                    <li><a href="#">Engine Oil</a></li>
-                                </ul>
-                                <ul class="details">
-                                    <li class="topic">Additional Cost </li>
-                                    <li><a href="#">100</a></li>
-                                    <li><a href="#">75</a></li>
-                                    <li><a href="#">50</a></li>
-                                    <li><a href="#">60</a></li>
-                                </ul>
-
-                            </div>
-                        </td><br>
-                        <i class='bx bx-search' ></i>
                     </div>
-
-
-                    <br>
-                    <br>
 
                     <div class="buttons">
                         <div class="button">
-                            <a href="#">Back</a>
+                            <a href="#">Home</a>
                         </div>
-                        <div class="button">
-                            <a href="#">Payment Confirmation</a>
-                        </div>
-
                     </div>
 
                     <script>

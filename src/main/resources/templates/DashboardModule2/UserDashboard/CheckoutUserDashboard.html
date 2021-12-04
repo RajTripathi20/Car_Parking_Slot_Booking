@@ -77,31 +77,10 @@
             <div class="recent-sales box">
                 <div class="title">Check Out</div>
                 <br>
-                <br>
                 <div class="registrationbox">
                     <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
-                        <div class="topic">
-                            <td><bold>Name:</bold><span> First Last Name </span></td><br>
-                            <i class='bx bx-search' ></i>
-                        </div>
-                        <div class="Location">
-                            <td><bold>Location:</bold><span> Shameerpet </span></td><br>
-                            <i class='bx bx-search' ></i>
-                        </div>
-                        <div class="Total Time">
-                            <td><bold>Total Time:</bold><span> XX.XX </span></td><br>
-                            <i class='bx bx-search' ></i>
-                        </div>
-                        <div class="Total Amount">
-                            <td><bold>Total Amount:</bold><span> XX </span></td><br>
-                            <i class='bx bx-search' ></i>
-                        </div>
-                    <br>
-                    <br>
-                    <br>
-                        <div class="AdditionalFeatures">
+                    <div class="AdditionalFeatures">
                             <td><bold>Add additional Features:</bold>
-                                <div >Features</div>
                                 <div class="sales-details">
                                     <ul class="details">
                                         <li class="topic">Select</li>
@@ -134,14 +113,43 @@
 
                         <br>
                         <br>
+                    <div class="topic">
+                        <td><bold>Name:</bold><span> First Last Name </span></td><br>
+                        <i class='bx bx-search' ></i>
+                    </div>
+                    <div class="Location">
+                        <td><bold>Location:</bold><span> Shameerpet </span></td><br>
+                        <i class='bx bx-search' ></i>
+                    </div>
+                    <div class="Total Time">
+                        <td><bold>Total Time:</bold><span> XX.XX </span></td><br>
+                        <i class='bx bx-search' ></i>
+                    </div>
+                    <div class="Total Amount">
+                        <td><bold>Total Amount:</bold><span> XX </span></td><br>
+                        <i class='bx bx-search' ></i>
+                    </div>
 
                     <div class="buttons">
                         <div class="button">
                             <a href="#">Back</a>
                         </div>
+                        <!-- Trigger/Open the Modal -->
                         <div class="button">
-                            <a href="#">Payment Confirmation</a>
+                            <button id="myBtn">Pay Now</button>
+
+                            <!-- The Modal -->
+                            <div id="myModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <p>Amount will be deducted from your account.</p>
+                                    <button>Confirm</button>
+                                </div>
+                            </div>
                         </div>
+                        <!--<div class="button">
+                            <a href="#">Payment Confirmation</a>
+                        </div>-->
 
                     </div>
 
@@ -154,6 +162,31 @@
                                 sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
                             }else
                                 sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                        }
+                        // Get the modal
+                        var modal = document.getElementById("myModal");
+
+                        // Get the button that opens the modal
+                        var btn = document.getElementById("myBtn");
+
+                        // Get the <span> element that closes the modal
+                        var span = document.getElementsByClassName("close")[0];
+
+                        // When the user clicks on the button, open the modal
+                        btn.onclick = function() {
+                            modal.style.display = "block";
+                        }
+
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function() {
+                            modal.style.display = "none";
+                        }
+
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
                         }
                     </script>
 
