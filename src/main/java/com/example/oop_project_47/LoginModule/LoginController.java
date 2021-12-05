@@ -66,7 +66,10 @@ public class LoginController implements WebMvcConfigurer {
 
                 }
                 else if(existingUser.getUser_role().equals("CAR_OWNER"))  {
-                        CurrentUser.setCurrentUser(carOwnerRepository.findUserByUsername(existingUser.getUsername()));
+                        CarOwner currentUser = carOwnerRepository.findUserByUsername(existingUser.getUsername());
+                        if(currentUser.getWallet()==null)
+                            currentUser.setWallet((long)0);
+                        CurrentUser.setCurrentUser(currentUser);
                     modelAndView.setViewName("redirect:/Dashboard/c/");
                     //Enter Owner Dashboard here
                 }

@@ -2,6 +2,7 @@ package com.example.oop_project_47.DashboardModule;
 
 import com.example.oop_project_47.Admin.Admin;
 import com.example.oop_project_47.Bookings.Booking;
+import com.example.oop_project_47.Bookings.CurrentBooking;
 import com.example.oop_project_47.Car_Owner.CarOwner;
 import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
 import com.example.oop_project_47.Car_Owner.CurrentUser;
@@ -53,9 +54,25 @@ public class CarOwnerDashboardController implements WebMvcConfigurer {
     }
 
     @GetMapping(value = "Wallet")
-    public ModelAndView displayWallet(ModelAndView modelAndView, CarOwner carOwner) {
-        modelAndView.addObject("carOwner", carOwner);
+    public ModelAndView displayWallet(ModelAndView modelAndView, CarOwner currentUser) {
+        currentUser = CurrentUser.getCurrentUser();
+        modelAndView.addObject("wallet", currentUser.getWallet());
+        modelAndView.addObject("currentUser", currentUser);
         modelAndView.setViewName("/DashboardModule2/UserDashboard/WalletUserDashboard");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "Wallet/Add")
+    public ModelAndView CalculateWallet(ModelAndView modelAndView, CarOwner currentUser) {
+        CarOwner finalUser = CurrentUser.getCurrentUser();
+        if(currentUser.getWallet() <=0)
+            ;
+        else {
+        finalUser.setWallet(currentUser.getWallet()+ finalUser.getWallet());
+        CurrentUser.setCurrentUser(finalUser);
+        //modelAndView.addObject("wallet", finalUser.getWallet());
+        carOwnerRepository.save(finalUser); }
+        modelAndView.setViewName("redirect:/Dashboard/c/Wallet");
         return modelAndView;
     }
 

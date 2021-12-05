@@ -57,25 +57,30 @@ public class BookingController {
                     //nearBySpaces.get(i).setAvailableSUV(nearBySpaces.get(i).getSuvSlots());
                     //nearBySpaces.get(i).setAvailableBuffer(nearBySpaces.get(i).getBufferSlots());
                     String carType = currentOwner.getCarType();
+                    booking.setCarType(carType);
                     if (carType.equals("Hatchback")) {
                         if (nearBySpaces.get(i).getAvailableHatchback() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
                             nearBySpaces.get(i).setHatchbackStatus("Book");
+                            booking.setSlotType("Hatchback");
                             if (clicked == nearBySpaces.get(i).getId()) ;
                             // nearBySpaces.get(i).setAvailableHatchback(nearBySpaces.get(i).getAvailableHatchback() - 1);
                         } else if (nearBySpaces.get(i).getAvailableSedan() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
                             nearBySpaces.get(i).setSedanStatus("Book");
+                            booking.setSlotType("Sedan");
                             if (clicked == nearBySpaces.get(i).getId()) ;
                             // nearBySpaces.get(i).setAvailableSedan(nearBySpaces.get(i).getAvailableSedan() - 1);
                         } else if (nearBySpaces.get(i).getAvailableSUV() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
                             nearBySpaces.get(i).setSUVStatus("Book");
+                            booking.setSlotType("SUV");
                             if (clicked == nearBySpaces.get(i).getId()) ;
                             //nearBySpaces.get(i).setAvailableSUV(nearBySpaces.get(i).getAvailableSUV() - 1);
                         } else if (nearBySpaces.get(i).getAvailableBuffer() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
                             if (clicked == nearBySpaces.get(i).getId()) ;
+                            booking.setSlotType("Buffer");
                             //nearBySpaces.get(i).setAvailableBuffer(nearBySpaces.get(i).getAvailableBuffer() - 1);
                         } else {
                             relevantSlots.add("Hatchback");
@@ -101,15 +106,18 @@ public class BookingController {
                         if (nearBySpaces.get(i).getAvailableSedan() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
                             nearBySpaces.get(i).setSedanStatus("Book");
+                            booking.setSlotType("Sedan");
                             if (clicked == nearBySpaces.get(i).getId()) ;
                             //nearBySpaces.get(i).setAvailableSedan(nearBySpaces.get(i).getAvailableSedan() - 1);
                         } else if (nearBySpaces.get(i).getAvailableSUV() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
                             nearBySpaces.get(i).setSUVStatus("Book");
+                            booking.setSlotType("SUV");
                             if (clicked == nearBySpaces.get(i).getId()) ;
                             //nearBySpaces.get(i).setAvailableSUV(nearBySpaces.get(i).getAvailableSUV() - 1);
                         } else if (nearBySpaces.get(i).getAvailableBuffer() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
+                            booking.setSlotType("Buffer");
                             if (clicked == nearBySpaces.get(i).getId()) ;
                             //nearBySpaces.get(i).setAvailableBuffer(nearBySpaces.get(i).getAvailableBuffer() - 1);
                         } else {
@@ -137,10 +145,12 @@ public class BookingController {
                         if (nearBySpaces.get(i).getAvailableSUV() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
                             nearBySpaces.get(i).setSUVStatus("Book");
+                            booking.setSlotType("SUV");
                             if (clicked == nearBySpaces.get(i).getId()) ;
                             //nearBySpaces.get(i).setAvailableSUV(nearBySpaces.get(i).getAvailableSUV() - 1);
                         } else if (nearBySpaces.get(i).getAvailableBuffer() != 0) {
                             nearBySpaces.get(i).setStatus("Available");
+                            booking.setSlotType("Buffer");
                             if (clicked == nearBySpaces.get(i).getId()) ;
                             //nearBySpaces.get(i).setAvailableBuffer(nearBySpaces.get(i).getAvailableBuffer() - 1);
 
@@ -168,9 +178,11 @@ public class BookingController {
             }
             modelAndView.addObject("parkingSpace", new ParkingSpace());
             modelAndView.addObject("nearBySpaces", nearBySpaces);
+            CurrentBooking.setCurrentBooking(booking);
             modelAndView.setViewName("/DashboardModule2/UserDashboard/BookingSlotScreen1UserDashboard");
             return modelAndView;
         }
+
     }
 
 
@@ -190,9 +202,39 @@ public class BookingController {
             modelAndView.addObject("message", "Please select one");
             modelAndView.setViewName("/DashboardModule2/UserDashboard/BookingSlotScreen1UserDashboard");
             } else {
-            modelAndView.setViewName("/DashboardModule2/UserDashboard/CheckoutUserDashboard");
+            Booking currentBooking = CurrentBooking.getCurrentBooking();
+            currentBooking.setSpace(count);
+            CurrentBooking.setCurrentBooking(currentBooking);
+            modelAndView.setViewName("redirect:/Dashboard/c/BookingSlot/Checkout");
             }
             return modelAndView;
 
         }
+        @RequestMapping(value = "/Dashboard/c/BookingSlot/Checkout", method = RequestMethod.GET)
+        public ModelAndView displayCheckout(ModelAndView modelAndView)  {
+
+        Booking booking = CurrentBooking.getCurrentBooking();
+        long totalTimeMilli = Math.abs(booking.getCheckOut().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()- booking.getCheckIn().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        long totalTime =  TimeUnit.HOURS.convert(totalTimeMilli, TimeUnit.MILLISECONDS);
+        long totalCost = 25*totalTime;
+        modelAndView.addObject("totalTime", totalTime);
+        modelAndView.addObject("totalCost", totalCost);
+        CarOwner currentUser = CurrentUser.getCurrentUser();
+        if(currentUser.getWallet()<totalCost)
+        {
+            modelAndView.addObject("message", "Please add money before proceeding");
+            modelAndView.setViewName("/DashboardModule2/UserDashboard/CheckoutUserDashboard");
+        }
+        else {
+            currentUser.setWallet(currentUser.getWallet()-totalCost);
+            CurrentUser.setCurrentUser(currentUser);
+            Booking currentBooking = CurrentBooking.getCurrentBooking();
+            currentBooking.setUsername(currentUser.getUsername());
+            bookingRepository.save(currentBooking);
+            modelAndView.setViewName("/DashboardModule2/UserDashboard/HomeUserDashboard");
+        }
+        return modelAndView;
+
+        }
+
 }

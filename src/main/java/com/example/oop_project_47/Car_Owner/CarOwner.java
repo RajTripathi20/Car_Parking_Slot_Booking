@@ -54,6 +54,17 @@ public class CarOwner extends User implements UserDetails {
     @NotEmpty
     private String carRegistrationNumber;
 
+    @Column(name = "Wallet")
+    private Long wallet;
+
+    public Long getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Long wallet) {
+        this.wallet = wallet;
+    }
+
     public AuthenticationProvider getAuthProvider() {
         return authProvider;
     }

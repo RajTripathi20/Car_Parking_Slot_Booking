@@ -23,37 +23,46 @@ public class Booking extends NamedEntity {
     private Integer id;
 
     @Column(name = "Username")
-    @NotEmpty
+   // @NotEmpty
     private String username;
 
     @Column(name = "Car_type")
-    @NotEmpty
+  //  @NotEmpty
     private String carType;
 
+    @Column(name = "Slot_type")
+   // @NotEmpty
+    private String slotType;
+
     @Column(name = "Checkin_DateTime")
-    @NotEmpty
-    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm")
+    //@NotEmpty
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH")
     private LocalDateTime checkIn;
 
     @Column(name = "Checkout_DateTime")
-    @NotEmpty
-    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm")
+    //@NotEmpty
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH")
     private LocalDateTime checkOut;
 
+    @Column(name = "Actual_Checkout_DateTime")
+    //@NotEmpty
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH")
+    private LocalDateTime actualCheckOut;
+
     @Column(name = "Parking_Space")
-    @NotEmpty
+   // @NotEmpty
     private Integer space;
 
     @Column(name = "Location")
-    @NotEmpty
+   // @NotEmpty
     private String location;
 
     @Column(name = "Email_ID")
-    @NotEmpty
+    //@NotEmpty
     private String email;
 
     @Column(name = "Status")
-    @NotEmpty
+    //@NotEmpty
     private String status;
 
     public Integer getId() {
@@ -126,6 +135,22 @@ public class Booking extends NamedEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public LocalDateTime getActualCheckOut() {
+        return actualCheckOut;
+    }
+
+    public void setActualCheckOut(LocalDateTime actualCheckOut) {
+        this.actualCheckOut = actualCheckOut;
+    }
+
+    public String getSlotType() {
+        return slotType;
+    }
+
+    public void setSlotType(String slotType) {
+        this.slotType = slotType;
     }
 }
 
