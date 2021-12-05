@@ -114,11 +114,11 @@
                         <br>
                         <br>
                     <div class="topic">
-                        <td><bold>Name:</bold><span> First Last Name </span></td><br>
+                        <td><bold>Name:</bold><span> <a th:text = "${name}"/> </span></td><br>
                         <i class='bx bx-search' ></i>
                     </div>
                     <div class="Location">
-                        <td><bold>Location:</bold><span> Shameerpet </span></td><br>
+                        <td><bold>Location:</bold><span> <a th:text = "${location}"/> </span></td><br>
                         <i class='bx bx-search' ></i>
                     </div>
                     <div class="Total Time">
@@ -142,8 +142,10 @@
                             <div id="myModal" class="modal">
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
+                                    <form name='BookConfirmation' th:action="@{/Dashboard/c/BookingSlot/Confirmation}" method='POST'>
                                     <p>Amount will be deducted from your account.</p>
-                                    <button>Confirm</button>
+                                    <button><input name="submit" type="submit" value="Submit" /></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

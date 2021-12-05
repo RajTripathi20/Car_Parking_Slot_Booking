@@ -101,10 +101,10 @@
 
                         </tr>
 
-                        <tr th:each="Booking : ${allBookings}">
-                            <td th:text="${booking.parking_space}"></td>
-                            <td th:text="${booking.checkin_time}"></td>
-                            <td th:text="${booking.checkout_time}"></td>
+                        <tr th:each="booking : ${allBookings}">
+                            <td th:text="${booking.space}"></td>
+                            <td th:text="${booking.checkIn}"></td>
+                            <td th:text="${booking.checkOut}"></td>
                             <td th:text="${booking.status}"></td>
                         </tr>
                     </table>
