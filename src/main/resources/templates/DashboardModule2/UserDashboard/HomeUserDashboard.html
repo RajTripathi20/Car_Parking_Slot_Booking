@@ -67,7 +67,7 @@
         </div>
         <div class="profile-details">
             <!--<img src="images/profile.jpg" alt="">-->
-            <span class="admin_name">Name</span>
+            <span class="admin_name"><tr th:each="user:${displayRegistration}"><td th:text="${user.firstName}"></td></tr></span>
             <i class='bx bx-chevron-down' ></i>
         </div>
     </nav>
@@ -132,9 +132,6 @@
                     </ul>
                                     </div>
                 <div class="buttons">
-                    <div class="button">
-                        <a href="#">See All</a>
-                    </div>
                     <div class="button">
                         <a href="#">Book Now</a>
                     </div>

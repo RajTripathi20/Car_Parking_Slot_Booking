@@ -9,9 +9,9 @@
 
 body {
     background-size: cover;
-    background-image: url(../../../static/background.jpg);
     background-color: #333333;
     background-repeat: no-repeat;
+    /*background-image: url('background.jpg');*/
     background-attachment: fixed;
     background-position: center;
     margin: 0;
@@ -21,8 +21,7 @@ body {
 
 #mainHeader {
     margin-top: 150px;
-    left: 50%;
-    margin-left: 650px;
+    text-align: center;
     color: #FCF6F5FF;
 
 }
