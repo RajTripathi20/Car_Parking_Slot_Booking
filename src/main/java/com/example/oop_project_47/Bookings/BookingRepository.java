@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BookingRepository extends Repository<Booking, Integer> {
 
-
+    List<Booking> findAllBySpaceAndCarTypeIn(Integer spaceId, List<String> carType);
     List<Booking> findAll();
 
     Booking findById(Integer id);

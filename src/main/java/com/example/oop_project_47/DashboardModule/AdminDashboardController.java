@@ -91,6 +91,10 @@ public class AdminDashboardController implements WebMvcConfigurer {
             modelAndView.setViewName("/DashboardModule2/AdminDashboard/AddParkingSpacesAdmin");
             return modelAndView;
         } else {
+            parkingSpace.setAvailableHatchback(parkingSpace.getHatchbackSlots());
+            parkingSpace.setAvailableSedan(parkingSpace.getSedanSlots());
+            parkingSpace.setAvailableSUV(parkingSpace.getSuvSlots());
+            parkingSpace.setAvailableBuffer(parkingSpace.getBufferSlots());
             parkingSpaceRepository.save(parkingSpace);
             modelAndView.addObject("parkingSpace", parkingSpace);
             modelAndView.setViewName("redirect:/Dashboard/a/ParkingSpace");

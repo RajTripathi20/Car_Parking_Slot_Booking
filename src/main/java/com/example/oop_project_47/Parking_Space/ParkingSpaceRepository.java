@@ -11,7 +11,7 @@ public interface ParkingSpaceRepository extends JpaRepository<ParkingSpace, Stri
 
     
     List<ParkingSpace> findAllByLocation(String location);
-    Optional<ParkingSpace> findById(Integer id);
+    ParkingSpace findById(Integer id);
     ParkingSpace findByAddress(String address);
 
    // ParkingSpace findByDate(LocalDate date);

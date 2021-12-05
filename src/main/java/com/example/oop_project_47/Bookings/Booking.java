@@ -26,19 +26,23 @@ public class Booking extends NamedEntity {
     @NotEmpty
     private String username;
 
+    @Column(name = "Car_type")
+    @NotEmpty
+    private String carType;
+
     @Column(name = "Checkin_DateTime")
     @NotEmpty
-    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm")
     private LocalDateTime checkIn;
 
     @Column(name = "Checkout_DateTime")
     @NotEmpty
-    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm")
     private LocalDateTime checkOut;
 
     @Column(name = "Parking_Space")
     @NotEmpty
-    private String space;
+    private Integer space;
 
     @Column(name = "Location")
     @NotEmpty
@@ -68,6 +72,13 @@ public class Booking extends NamedEntity {
         this.username = username;
     }
 
+    public String getCarType() {
+        return carType;
+    }
+
+    public void setCarType(String carType) {
+        this.carType = carType;
+    }
 
     public LocalDateTime getCheckIn() {
         return checkIn;
@@ -85,11 +96,11 @@ public class Booking extends NamedEntity {
         this.checkOut = checkOut;
     }
 
-    public String getSpace() {
+    public Integer getSpace() {
         return space;
     }
 
-    public void setSpace(String space) {
+    public void setSpace(Integer space) {
         this.space = space;
     }
 
