@@ -16,7 +16,7 @@ public class CarOwnerDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        Optional<CarOwner> carOwner = carOwnerRepository.findUserByUsername(username);
+        Optional<CarOwner> carOwner = carOwnerRepository.findByUsername(username);
         carOwner.orElseThrow(()-> new UsernameNotFoundException("Not found:"+username));
         return carOwner.map(CarOwner::new).get();
     }

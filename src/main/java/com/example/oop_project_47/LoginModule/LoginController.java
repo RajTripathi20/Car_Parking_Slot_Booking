@@ -1,10 +1,7 @@
 package com.example.oop_project_47.LoginModule;
 
 import com.example.oop_project_47.Admin.Admin;
-import com.example.oop_project_47.Car_Owner.CarOwner;
-import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
-import com.example.oop_project_47.Car_Owner.ConfirmationToken;
-import com.example.oop_project_47.Car_Owner.ConfirmationTokenRepository;
+import com.example.oop_project_47.Car_Owner.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -69,6 +66,7 @@ public class LoginController implements WebMvcConfigurer {
 
                 }
                 else if(existingUser.getUser_role().equals("CAR_OWNER"))  {
+                        CurrentUser.setCurrentUser(carOwnerRepository.findUserByUsername(existingUser.getUsername()));
                     modelAndView.setViewName("redirect:/Dashboard/c/");
                     //Enter Owner Dashboard here
                 }

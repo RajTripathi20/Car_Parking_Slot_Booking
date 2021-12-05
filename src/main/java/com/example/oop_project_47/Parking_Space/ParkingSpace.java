@@ -45,19 +45,36 @@ public class ParkingSpace {
 
     @Column(name = "Hatchback_Status")
     //@NotEmpty
-    private String hatchbackStatus = "Available";
+    private String hatchbackStatus;
+
+    @Column(name = "Hatchback_Slots_Available")
+    //@NotEmpty
+    private Integer availableHatchback;
 
     @Column(name = "Sedan_Status")
     //@NotEmpty
-    private String sedanStatus = "Available";
+    private String sedanStatus;
+
+    @Column(name = "Sedan_Slots_Available")
+    //@NotEmpty
+    private Integer availableSedan;
 
     @Column(name = "SUV_Status")
     //@NotEmpty
-    private String SUVStatus = "Available";
+    private String SUVStatus;
+
+    @Column(name = "SUV_Slots_Available")
+    //@NotEmpty
+    private Integer availableSUV;
+
+    @Column(name = "Buffer_Slots_Available")
+    //@NotEmpty
+    private Integer availableBuffer;
+
 
     @Column(name = "Status")
     //@NotEmpty
-    private String status = "Available";
+    private String status;
 
     @Column(name = "Worker_Rating")
     //@NotEmpty
@@ -117,6 +134,38 @@ public class ParkingSpace {
 
     public void setBufferSlots(Integer bufferSlots) {
         this.bufferSlots = bufferSlots;
+    }
+
+    public Integer getAvailableHatchback() {
+        return availableHatchback;
+    }
+
+    public void setAvailableHatchback(Integer availableHatchback) {
+        this.availableHatchback = availableHatchback;
+    }
+
+    public Integer getAvailableSedan() {
+        return availableSedan;
+    }
+
+    public void setAvailableSedan(Integer availableSedan) {
+        this.availableSedan = availableSedan;
+    }
+
+    public Integer getAvailableSUV() {
+        return availableSUV;
+    }
+
+    public void setAvailableSUV(Integer availableSUV) {
+        this.availableSUV = availableSUV;
+    }
+
+    public Integer getAvailableBuffer() {
+        return availableBuffer;
+    }
+
+    public void setAvailableBuffer(Integer availableBuffer) {
+        this.availableBuffer = availableBuffer;
     }
 
     public Integer getWorkerCount() {
