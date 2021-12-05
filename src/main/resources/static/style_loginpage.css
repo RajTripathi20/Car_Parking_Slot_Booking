@@ -9,9 +9,9 @@
 
 body {
     background-size: cover;
-    background-image: url(../../../static/background.jpg);
     background-color: #333333;
     background-repeat: no-repeat;
+    /*background-image: url('background.jpg');*/
     background-attachment: fixed;
     background-position: center;
     margin: 0;
