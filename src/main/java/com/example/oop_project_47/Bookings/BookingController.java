@@ -183,7 +183,7 @@ public class BookingController {
         modelAndView.addObject("count", count);
         //modelAndView.addObject("parkingSpace", parkingSpace);
          ParkingSpace bookParkingSpace = parkingSpaceRepository.findById(count);
-        if (!bookParkingSpace.getStatus().equals("Available")) {
+        if (!(bookParkingSpace.getStatus().equals("Available"))) {
             modelAndView.addObject("message", "Not Available for booking");
             modelAndView.setViewName("/DashboardModule2/UserDashboard/BookingSlotScreen1UserDashboard");}
          else if (bookParkingSpace == null) {

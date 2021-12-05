@@ -94,7 +94,7 @@
 
 
                         <tr th:each="ParkingSpace : ${nearBySpaces}">
-                            <input type="radio" name="group1" id="radio1" th:value = "${ParkingSpace.id}"  />
+                            <input type="radio" name="group1" id="radio1" th:value = "${ParkingSpace.id}"/>
                             <td id="wrapper"><label for="radio1"></label><label><input type="radio" name="grp1" id="radio2" ><a ></a></label></td>
                             <td th:text="${ParkingSpace.id}" ></td>
                             <td th:text="${ParkingSpace.location}"></td>

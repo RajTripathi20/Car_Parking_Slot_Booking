@@ -4,6 +4,7 @@ import com.example.oop_project_47.Admin.Admin;
 import com.example.oop_project_47.Bookings.Booking;
 import com.example.oop_project_47.Car_Owner.CarOwner;
 import com.example.oop_project_47.Car_Owner.CarOwnerRepository;
+import com.example.oop_project_47.Car_Owner.CurrentUser;
 import com.example.oop_project_47.LoginModule.LoginController;
 import com.example.oop_project_47.LoginModule.LoginCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class CarOwnerDashboardController implements WebMvcConfigurer {
 
     @GetMapping(value = "")
     public ModelAndView displayHome(ModelAndView modelAndView, CarOwner carOwner) {
+        carOwner = CurrentUser.getCurrentUser();
         modelAndView.addObject("carOwner", carOwner);
         modelAndView.setViewName("/DashboardModule2/UserDashboard/HomeUserDashboard");
         return modelAndView;
