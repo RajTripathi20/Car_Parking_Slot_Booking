@@ -87,10 +87,36 @@
                             <th>Address</th>
                             <th>Worker Rating</th>
                             <th>Status</th>
+                            <th></th>
 
                         </tr>
-
-                        <tr th:each="parkingSpace : ${nearBySpaces}">
+                        <!--<form name='bookingslot'method='POST'> th:action="@{/bookslot}" th:object="${carOwner}
+                            <tr th:each="parkingSpace : ${nearBySpaces}">
+                                <td th:text="${parkingSpace.id}" >1</td>
+                                <td th:text="${parkingSpace.location}">Shameerpet</td>
+                                <td th:text="${parkingSpace.address}">Hyderabad</td>
+                                <td th:text="${parkingSpace.address}">7/10</td>
+                                <td th:text="${parkingSpace.status}">Empty</td>
+                                <td>
+                                    <input name="submit" type="submit" value="Book now!" />
+                                </td>
+                            </tr>
+                        </form>-->
+                        <!--<form name='bookingslot'method='POST'> --><!--th:action="@{/bookslot}" th:object="${carOwner}"-->
+                        <!--<tr th:each="parkingSpace : ${nearBySpaces}">
+                            <td th:text="${parkingSpace.id}" ></td>
+                            <td th:text="${parkingSpace.location}"></td>
+                            <td th:text="${parkingSpace.address}"></td>
+                            <td th:text="${parkingSpace.address}"></td>
+                            <td th:text="${parkingSpace.status}"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input name="submit" type="submit" value="Book now!" />
+                                </td>
+                            </tr>
+                        </form>-->
+                        <!--<tr th:each="parkingSpace : ${nearBySpaces}">
                             <input type="radio" name="group1" id="radio1" checked="checked"  />
                             <td id="wrapper"><label for="radio1"></label><label><input type="radio" name="group1" id="radio2" ><a href="#"></a></label></td>
                             <td th:text="${parkingSpace.id}" ></td>
@@ -101,7 +127,7 @@
 
                         </tr>
                     </table>
-                    <td th:text="${message}"></td>
+                    <td th:text="${message}"></td>-->
 
 
                     <!--<ul class="details">
@@ -145,13 +171,15 @@
                         <li><a href="#">Available</a></li>
                     </ul>-->
                 </div>
+                <br>
+                <br>
                 <div class="buttons">
                     <div class="button">
                         <a href="#">Back</a>
                     </div>
-                    <div class="button">
+                    <!--<div class="button">
                         <a href="#">Book Now!!</a>
-                    </div>
+                    </div>-->
                 </div>
 
                 <script>
